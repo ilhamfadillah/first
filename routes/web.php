@@ -12,7 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
-// test  
+Route::get('/charts/morris', function () {
+    return view('pages/charts/morris');
+});
+
+Route::get('/admin', 'AdminController@index');
