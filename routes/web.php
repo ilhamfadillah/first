@@ -23,4 +23,12 @@ Route::get('/product', function () {
     return view('product');
 });
 
+Route::get('/admin/add/user', function () {
+    return view('add_user');
+});
+
+Route::get('/admin/add/product', function () {
+    return view('add_product');
+});
+
 Route::get('/admin', 'AdminController@index');
