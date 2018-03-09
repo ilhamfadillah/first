@@ -9,21 +9,25 @@
   </head>
   <body>
     <div class="container">
+      <h2 class="text-center">Tambah User</h2>
       <div class="row">
         <div class="col-lg-4">
           <form>
             <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+              <label for="username">Username</label>
+              <input type="text" name="form_username" class="form-control" placeholder="Enter Username">
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              <label for="password">Password</label>
+              <input type="password" name="form_password" class="form-control" placeholder="Enter password">
             </div>
-            <div class="form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="password" name="form_email" class="form-control" placeholder="Enter Email">
+            </div>
+            <div class="form-group">
+              <label for="alamat">Alamat</label>
+              <textarea name="form_alamat" rows="8" cols="80" class="form-control"></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
