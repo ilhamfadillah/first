@@ -70,29 +70,20 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu" data-widget="tree">
         <li class="header">Menu</li>
-
-        <li><a href="#">Admin</a></li>
+        <li class="active"><a href="">Admin</a></li>
         <li><a href="#">User</a></li>
         <li><a href="#">Product</a></li>
+      </ul>
 
     </section>
     <!-- /.sidebar -->
   </aside>
 
   <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>Admin</h1>
-    </section>
-
-    <!-- Main content -->
-    <section class="content">
-
-    </section>
-
-  </div>
+    @include('home-content')
   <!-- /.content-wrapper -->
+
+  <!-- footer -->
   <footer class="main-footer">
     <div class="pull-right hidden-xs">
       <b>Version</b> 2.4.0

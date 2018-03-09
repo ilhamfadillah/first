@@ -15,8 +15,8 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/charts/morris', function () {
-    return view('pages/charts/morris');
+Route::get('/home-content', function () {
+    return view('home-content');
 });
 
 Route::get('/admin', 'AdminController@index');
