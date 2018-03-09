@@ -15,7 +15,7 @@
           <form>
             <div class="form-group">
               <label for="product_name">Nama</label>
-              <input type="text" name="form_username" class="form-control" placeholder="Enter Username">
+              <input type="text" name="form_username" class="form-control" placeholder="Enter Produk">
             </div>
             <div class="form-group">
               <label for="product_stock">Stock</label>

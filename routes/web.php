@@ -32,3 +32,7 @@ Route::get('/admin/add/product', function () {
 });
 
 Route::get('/admin', 'AdminController@index');
+
+Route::get('/layout', 'LayoutController@index');
+
+Route::get('/layout/kedua', 'LayoutController@kedua');
