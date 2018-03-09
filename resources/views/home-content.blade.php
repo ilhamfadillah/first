@@ -39,21 +39,20 @@
     </script>
   </head>
     <!--Div that will hold the pie chart-->
+    <style media="screen">
+      .btn_add{
+        margin-top: 25px;
+      }
+    </style>
 <body>
+    <div class="content-wrapper">
+      <!-- Content Header (Page header) -->
+      <section class="content-header">
+        <h1><b>A</b>dmin<b>F</b>irst</h1>
+      </section>
 
-
-
-<div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <section class="content-header">
-    <h1><b>A</b>dmin<b>F</b>irst</h1>
-  </section>
-
-  <!-- Main content -->
-  <section class="content">
-    <div id="chart_div"></div>
-  </section>
-</div>
-
-
+      <!-- Main content -->
+      <section class="content">
+        <div id="chart_div"></div>
+      </section>
 </body>

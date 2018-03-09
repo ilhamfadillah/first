@@ -15,8 +15,12 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/home-content', function () {
-    return view('home-content');
+Route::get('/user', function () {
+    return view('user');
+});
+
+Route::get('/product', function () {
+    return view('product');
 });
 
 Route::get('/admin', 'AdminController@index');
