@@ -12,7 +12,7 @@
 */
 
 Route::get('/', function () {
-    return view('admin');
+    return view('index');
 });
 
 Route::get('admin', function () {
@@ -23,7 +23,7 @@ Route::get('user', function () {
     return view('user');
 });
 
-Route::get('/product', function () {
+Route::get('product', function () {
     return view('product');
 });
 
@@ -38,5 +38,7 @@ Route::get('/admin/add/product', function () {
 Route::get('/admin', 'AdminController@index');
 
 Route::get('/user', 'UserController@index');
+
+Route::get('/product', 'ProductController@index');
 
 Route::get('/layout/kedua', 'LayoutController@kedua');
