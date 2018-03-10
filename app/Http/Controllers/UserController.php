@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\User;
 
-class AdminController extends Controller
+class UserController extends Controller
 {
     /**
      * Show the profile for the given user.
@@ -14,7 +15,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view("admin");
+        $users = User::get();
+        return view("user")->with('users', $users);;
     }
-
 }
