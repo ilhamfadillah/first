@@ -1,12 +1,14 @@
 @extends('layouts.default')
 
+@section('title', 'User')
+
 @section('content')
 
   <!-- Content Header (Page header) -->
   <section class="content-header">
     <h1>
-      Data Tables
-      <small>advanced tables</small>
+      Data User
+      <small>List User Data</small>
     </h1>
     <ol class="breadcrumb">
       <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -18,6 +20,11 @@
   <!-- Main content -->
   <section class="content">
     <div class="row">
+      <div class="col-xs-12 text-right">
+        <button type="button" name="button" class="btn btn-primary">
+          <span class="glyphicon glyphicon-plus">ADD</span>
+        </button>
+      </div>
       <div class="col-xs-12">
         <div class="box">
           <div class="box-header">
@@ -28,24 +35,32 @@
             <table id="example2" class="table table-bordered table-hover">
               <thead>
                 <tr>
-                  <th>Id</th>
-                  <th>Username</th>
-                  <th>Password</th>
-                  <th>Email</th>
-                  <th>Phone Number</th>
-                  <th>Action</th>
+                  <th class="text-center">Id</th>
+                  <th class="text-center">Username</th>
+                  <th class="text-center">Password</th>
+                  <th class="text-center">Email</th>
+                  <th class="text-center">Phone Number</th>
+                  <th class="text-center">Action</th>
                 </tr>
               </thead>
               <tbody>
                 @foreach($users as $user)
                 <tr>
-                  <td>{{ $user->id }}</td>
+                  <td class="text-center">{{ $user->id }}</td>
                   <td>{{ $user->username }}</td>
                   <td>{{ $user->password }}</td>
                   <td>{{ $user->email }}</td>
                   <td>{{ $user->phone_number }}</td>
-                  <td>
-                    <a href="#">Edit</a> | <a href="#">Delete</a>
+                  <td class="text-center">
+                    <!--Button Edit-->
+                    <button type="button" name="button" class="btn btn-info">
+                      <span class="glyphicon glyphicon-pencil">Edit</span>
+                    </button>
+
+                    <!--Button Remove-->
+                    <button type="button" name="button" class="btn btn-danger">
+                      <span class="glyphicon glyphicon-remove">Delete</span>
+                    </button>
                   </td>
                 </tr>
                 @endforeach
@@ -56,5 +71,6 @@
         </div>
         <!-- /.box -->
       </div>
+    </div>
     </section>
 @endsection

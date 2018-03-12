@@ -1,5 +1,7 @@
 @extends('layouts.default')
 
+@section('title', 'Admin')
+
 @section('content')
 <!-- Content Header (Page header) -->
 <section class="content-header">
