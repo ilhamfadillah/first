@@ -47,7 +47,7 @@
       <div class="small-box bg-green">
         <div class="inner">
           <h3>
-            @foreach($products as $product)  
+            @foreach($products as $product)
               @if($loop->first)
                 {{$product->sum('stock')}}
               @endif
@@ -65,9 +65,9 @@
 
   <div class="row">
     <div class="col-xs-12 text-right">
-      <button type="button" name="button" class="btn btn-primary">
+      <a href="{{ url('/admin/add/product') }}" class="btn btn-primary">
         <span class="glyphicon glyphicon-plus">ADD</span>
-      </button>
+      </a>
     </div>
     <div class="col-xs-12">
       <div class="box">

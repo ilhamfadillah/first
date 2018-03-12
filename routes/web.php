@@ -35,10 +35,12 @@ Route::get('/admin/add/product', function () {
     return view('add_product');
 });
 
+
 Route::get('/admin', 'AdminController@index');
 
 Route::get('/user', 'UserController@index');
 
 Route::get('/product', 'ProductController@index');
+Route::post('/product', 'ProductController@store');
 
 Route::get('/layout/kedua', 'LayoutController@kedua');

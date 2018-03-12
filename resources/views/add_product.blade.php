@@ -12,14 +12,18 @@
       <h2 class="text-center">Tambah Produk</h2>
       <div class="row">
         <div class="col-lg-4">
-          <form>
+          {{ Form::open(array('url' => 'product')) }}
             <div class="form-group">
               <label for="product_name">Nama</label>
-              <input type="text" name="form_username" class="form-control" placeholder="Enter Produk">
+              <input type="text" name="name" class="form-control" placeholder="Enter Produk">
+            </div>
+            <div class="form-group">
+              <label for="product_stock">Harga</label>
+              <input type="number" name="price" class="form-control" placeholder="0">
             </div>
             <div class="form-group">
               <label for="product_stock">Stock</label>
-              <input type="number" name="form_username" class="form-control" placeholder="0">
+              <input type="number" name="stock" class="form-control" placeholder="0">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
