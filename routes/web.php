@@ -32,7 +32,7 @@ Route::get('/admin/add/user', function () {
 });
 
 Route::get('/admin/add/product', function () {
-    return view('add_product');
+    return view('product/add_product');
 });
 
 
@@ -42,5 +42,4 @@ Route::get('/user', 'UserController@index');
 
 Route::get('/product', 'ProductController@index');
 Route::post('/product', 'ProductController@store');
-
-Route::get('/layout/kedua', 'LayoutController@kedua');
+Route::post('/product', 'ProductController@edit');

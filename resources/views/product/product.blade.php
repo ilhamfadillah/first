@@ -95,9 +95,9 @@
                 <td>{{ $product->stock }}</td>
                 <td class="text-center">
                   <!--Button Edit-->
-                  <button type="button" name="button" class="btn btn-info">
+                  <a href="" name="button" class="btn btn-info">
                     <span class="glyphicon glyphicon-pencil">Edit</span>
-                  </button>
+                  </a>
 
                   <!--Button Remove-->
                   <button type="button" name="button" class="btn btn-danger">

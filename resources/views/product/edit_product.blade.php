@@ -9,21 +9,21 @@
   </head>
   <body>
     <div class="container">
-      <h2 class="text-center">Tambah Produk</h2>
+      <h2 class="text-center">Edit Produk</h2>
       <div class="row">
         <div class="col-lg-4">
-          {{ Form::open(array('url' => 'product')) }}
+          <form action="{{ action('ProductController@edit', $id) }}" method="put">
             <div class="form-group">
-              <label for="product_name">Nama</label>
-              <input type="text" name="name" class="form-control" placeholder="Enter Produk">
+              <label for="product_name">Name</label>
+              <input type="text" name="name" class="form-control" placeholder="Enter Produk" value="{{ $product->name }}">
             </div>
             <div class="form-group">
-              <label for="product_stock">Harga</label>
-              <input type="number" name="price" class="form-control" placeholder="0">
+              <label for="product_stock">Price</label>
+              <input type="number" name="price" class="form-control" placeholder="0" value="{{ $product->price }}">
             </div>
             <div class="form-group">
               <label for="product_stock">Stock</label>
-              <input type="number" name="stock" class="form-control" placeholder="0">
+              <input type="number" name="stock" class="form-control" placeholder="0" value="{{ $product->stock }}">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>

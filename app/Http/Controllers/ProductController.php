@@ -17,19 +17,28 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::get();
-        return view("product")->with('products', $products);
-    }
+        return view("product.product")->with('products', $products);
 
+      }
     public function store(Request $request)
     {
 
        $product = new Product;
-       $product->name = 'aqua';
-       $product->price = '500';
-       $product->stock = 12;
+       $product->name = $request->post('name');
+       $product->price = $request->post('price');
+       $product->stock = $request->post('stock');
        $product->save();
         //$data = ['data1','data2','data3'];
         ///var_dump($_POST);
-        exit();
+    }
+
+    public function edit($id)
+    {
+        // get the nerd
+        $products = Product::find($id);
+
+        // show the edit form and pass the nerd
+        return View::make('product.edit_product')
+            ->with('products', $products);
     }
 }
