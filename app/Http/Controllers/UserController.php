@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use DB;
 use App\Http\Controllers\Controller;
 use App\User;
+use Illuminate\Http\Request;
+
 
 class UserController extends Controller
 {
@@ -16,6 +19,18 @@ class UserController extends Controller
     public function index()
     {
         $users = User::get();
-        return view("user.user")->with('users', $users);;
+        return view("user.user")->with('users', $users);
+    }
+
+    public function store()
+    {
+      $users = DB::table('users')->insert([
+          ['username' => 'ilham', 'votes'=>0],
+          ['password' => '123', 'votes'=>0],
+          ['email' => 'ilham@email.com'],
+          ['phone_number' => '750555']
+      ]);
+      return view('user.user');
+
     }
 }

@@ -34,11 +34,34 @@ class ProductController extends Controller
 
     public function edit($id)
     {
+        //var_dump($id);exit();
         // get the nerd
-        $products = Product::find($id);
+        $product = Product::find($id);
 
         // show the edit form and pass the nerd
-        return View::make('product.edit_product')
-            ->with('products', $products);
+        return view('product.edit_product',compact('product','id'));
+    }
+
+    public function update(Request $request)
+    {
+        //var_dump($request->all());exit();
+        $product = Product::find($request->id);
+        $product->name = $request->name;
+        $product->price = $request->price;
+        $product->stock = $request->stock;
+        $product->save();
+        return redirect('product.product');
+    }
+
+    public function destroy(Request $request)
+
+    {
+        //var_dump($request->all());exit();
+        $product = Product::find($request->id);
+        $product->delete();
+
+
+        return redirect()->route('product.product');
+
     }
 }

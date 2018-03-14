@@ -21,9 +21,9 @@
   <section class="content">
     <div class="row">
       <div class="col-xs-12 text-right">
-        <button type="button" name="button" class="btn btn-primary">
+        <a href="{{ url('/admin/add/user') }}" class="btn btn-primary">
           <span class="glyphicon glyphicon-plus">ADD</span>
-        </button>
+        </a>
       </div>
       <div class="col-xs-12">
         <div class="box">

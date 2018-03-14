@@ -2,35 +2,36 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>First -- Add -- Product</title>
+    <title>First -- Add -- User</title>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
   </head>
   <body>
     <div class="container">
-      <h2 class="text-center">Edit Produk</h2>
+      <h2 class="text-center">Edit User</h2>
       <div class="row">
-        <form class="" action="{{action('ProductController@update')}}" method="post">
-          {{csrf_field()}}
-          <input type="hidden" name="_method" value="PUT"/>
-          <input type="hidden" name="id" value="{{ $product->id }}">
         <div class="col-lg-4">
+          <form>
             <div class="form-group">
-              <label for="product_name">Name</label>
-              <input type="text" name="name" class="form-control" placeholder="Enter Product" value="{{ $product->name }}">
+              <label for="username">Username</label>
+              <input type="text" name="form_username" class="form-control" placeholder="Enter Username">
             </div>
             <div class="form-group">
-              <label for="product_stock">Price</label>
-              <input type="number" name="price" class="form-control" placeholder="0" value="{{ $product->price }}">
+              <label for="password">Password</label>
+              <input type="password" name="form_password" class="form-control" placeholder="Enter password">
             </div>
             <div class="form-group">
-              <label for="product_stock">Stock</label>
-              <input type="number" name="stock" class="form-control" placeholder="0" value="{{ $product->stock }}">
+              <label for="email">E-mail</label>
+              <input type="password" name="form_email" class="form-control" placeholder="Enter Email">
             </div>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <div class="form-group">
+              <label for="alamat">Alamat</label>
+              <textarea name="form_alamat" rows="8" cols="80" class="form-control"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
         </div>
-      </form>
       </div>
     </div>
 

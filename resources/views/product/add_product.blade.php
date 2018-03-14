@@ -9,7 +9,7 @@
   </head>
   <body>
     <div class="container">
-      <h2 class="text-center">Tambah Produk</h2>
+      <h2 class="text-center">Add New Product</h2>
       <div class="row">
         <div class="col-lg-4">
           {{ Form::open(array('url' => 'product')) }}

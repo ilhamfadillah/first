@@ -12,22 +12,22 @@
       <h2 class="text-center">Tambah User</h2>
       <div class="row">
         <div class="col-lg-4">
-          <form>
+          {{ Form::open(array('url' => 'user')) }}
             <div class="form-group">
               <label for="username">Username</label>
-              <input type="text" name="form_username" class="form-control" placeholder="Enter Username">
+              <input type="text" name="username" class="form-control" placeholder="Enter Username">
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" name="form_password" class="form-control" placeholder="Enter password">
+              <input type="password" name="password" class="form-control" placeholder="Enter password">
             </div>
             <div class="form-group">
               <label for="email">E-mail</label>
-              <input type="password" name="form_email" class="form-control" placeholder="Enter Email">
+              <input type="text" name="email" class="form-control" placeholder="Enter Email">
             </div>
             <div class="form-group">
-              <label for="alamat">Alamat</label>
-              <textarea name="form_alamat" rows="8" cols="80" class="form-control"></textarea>
+              <label for="username">Phone Number</label>
+              <input type="text" name="phone_number" class="form-control" placeholder="Enter Username">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>

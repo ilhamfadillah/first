@@ -65,7 +65,7 @@
 
   <div class="row">
     <div class="col-xs-12 text-right">
-      <a href="{{ url('/admin/add/product') }}" class="btn btn-primary">
+      <a href="" class="btn btn-primary">
         <span class="glyphicon glyphicon-plus">ADD</span>
       </a>
     </div>
@@ -95,14 +95,18 @@
                 <td>{{ $product->stock }}</td>
                 <td class="text-center">
                   <!--Button Edit-->
-                  <a href="" name="button" class="btn btn-info">
+                  <a href="{{ url('/admin/edit/product', ['id' => $product->id]) }}" name="button" class="btn btn-info">
                     <span class="glyphicon glyphicon-pencil">Edit</span>
                   </a>
 
                   <!--Button Remove-->
-                  <button type="button" name="button" class="btn btn-danger">
-                    <span class="glyphicon glyphicon-remove">Delete</span>
-                  </button>
+                  <form class="" action="{{action('ProductController@destroy')}}" method="post">
+                    {{csrf_field()}}
+                    <input type="hidden" name="_method" value="delete" name="button" class="btn btn-danger">
+                    <input type="hidden" name="id" value="{{$product->id}}">
+                    <input type="submit" class="glyphicon glyphicon-remove">Delete</span>
+                  </form>
+                  </a>
                 </td>
               </tr>
               @endforeach

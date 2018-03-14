@@ -28,18 +28,24 @@ Route::get('product', function () {
 });
 
 Route::get('/admin/add/user', function () {
-    return view('add_user');
+    return view('user/add_user');
 });
 
 Route::get('/admin/add/product', function () {
     return view('product/add_product');
 });
 
+Route::get('/admin/edit/product', function () {
+    return view('product/edit_product');
+});
 
 Route::get('/admin', 'AdminController@index');
 
 Route::get('/user', 'UserController@index');
+Route::get('/user', 'UserController@store');
 
 Route::get('/product', 'ProductController@index');
 Route::post('/product', 'ProductController@store');
-Route::post('/product', 'ProductController@edit');
+Route::get('/product/{id}', 'ProductController@edit');
+Route::put('/product', 'ProductController@update');
+Route::delete('/product', 'ProductController@destroy');
