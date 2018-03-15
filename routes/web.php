@@ -27,6 +27,10 @@ Route::get('product', function () {
     return view('product');
 });
 
+Route::get('supplier', function () {
+    return view('supplier');
+});
+
 Route::get('/admin/add/user', function () {
     return view('user/add_user');
 });
@@ -56,3 +60,5 @@ Route::post('/product', 'ProductController@store');
 Route::get('/product/{id}', 'ProductController@edit');
 Route::put('/product', 'ProductController@update');
 Route::delete('/product', 'ProductController@destroy');
+
+Route::get('/supplier', 'SupplierController@index');
