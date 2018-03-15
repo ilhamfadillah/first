@@ -31,6 +31,10 @@ Route::get('/admin/add/user', function () {
     return view('user/add_user');
 });
 
+Route::get('/admin/edit/user', function () {
+    return view('user/edit_user');
+});
+
 Route::get('/admin/add/product', function () {
     return view('product/add_product');
 });
@@ -42,7 +46,10 @@ Route::get('/admin/edit/product', function () {
 Route::get('/admin', 'AdminController@index');
 
 Route::get('/user', 'UserController@index');
-Route::get('/user', 'UserController@store');
+Route::post('/user', 'UserController@store');
+Route::get('/user/{id}', 'UserController@edit');
+Route::put('/user', 'UserController@update');
+Route::delete('/user', 'UserController@destroy');
 
 Route::get('/product', 'ProductController@index');
 Route::post('/product', 'ProductController@store');

@@ -12,24 +12,27 @@
       <h2 class="text-center">Edit User</h2>
       <div class="row">
         <div class="col-lg-4">
-          <form>
+          <form action="{{action('UserController@update')}}" method="post">
+            {{csrf_field()}}
+            <input type="hidden" name="_method" value="PUT">
+            <input type="hidden" name="id" value="{{ $user->id }}">
             <div class="form-group">
               <label for="username">Username</label>
-              <input type="text" name="form_username" class="form-control" placeholder="Enter Username">
+              <input type="text" name="username" class="form-control" placeholder="Enter Username" value="{{ $user->username }}">
             </div>
             <div class="form-group">
               <label for="password">Password</label>
-              <input type="password" name="form_password" class="form-control" placeholder="Enter password">
+              <input type="password" name="password" class="form-control" placeholder="Enter password" value="{{ $user->password }}">
             </div>
             <div class="form-group">
               <label for="email">E-mail</label>
-              <input type="password" name="form_email" class="form-control" placeholder="Enter Email">
+              <input type="text" name="email" class="form-control" placeholder="Enter Email" value="{{ $user->email }}">
             </div>
             <div class="form-group">
-              <label for="alamat">Alamat</label>
-              <textarea name="form_alamat" rows="8" cols="80" class="form-control"></textarea>
+              <label for="phone">Phone Number</label>
+              <input type="text" name="phone_number" class="form-control" placeholder="Phone Number" value="{{ $user->phone_number }}">
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-primary">Update</button>
           </form>
         </div>
       </div>

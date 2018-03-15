@@ -53,14 +53,19 @@
                   <td>{{ $user->phone_number }}</td>
                   <td class="text-center">
                     <!--Button Edit-->
-                    <button type="button" name="button" class="btn btn-info">
+                    <a href="{{ action('UserController@edit', ['id' => $user->id]) }}"  name="edit" class="btn btn-info">
                       <span class="glyphicon glyphicon-pencil">Edit</span>
-                    </button>
+                    </a>
 
                     <!--Button Remove-->
-                    <button type="button" name="button" class="btn btn-danger">
+                    <form class="" action="{{action('UserController@destroy')}}" method="post">
+                    <button type="submit" name="button" class="btn btn-danger">
                       <span class="glyphicon glyphicon-remove">Delete</span>
                     </button>
+                    {{csrf_field()}}
+                    <input type="hidden" name="id" value="{{$user->id}}">
+                    <input type="hidden" name="_method" value="delete">
+                  </form>
                   </td>
                 </tr>
                 @endforeach

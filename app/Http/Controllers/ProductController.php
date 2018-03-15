@@ -14,12 +14,14 @@ class ProductController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function index()
+
+     public function index()
     {
         $products = Product::get();
         return view("product.product")->with('products', $products);
 
-      }
+    }
+
     public function store(Request $request)
     {
 
@@ -30,11 +32,12 @@ class ProductController extends Controller
        $product->save();
         //$data = ['data1','data2','data3'];
         ///var_dump($_POST);
+        return redirect('product');
     }
 
-    public function edit($id)
+    public function edit($id)//for show data into form edit
     {
-        //var_dump($id);exit();
+        //var_dump($id);exit(); <- for checking sending data
         // get the nerd
         $product = Product::find($id);
 
@@ -50,7 +53,7 @@ class ProductController extends Controller
         $product->price = $request->price;
         $product->stock = $request->stock;
         $product->save();
-        return redirect('product.product');
+        return redirect('product');
     }
 
     public function destroy(Request $request)
@@ -61,7 +64,7 @@ class ProductController extends Controller
         $product->delete();
 
 
-        return redirect()->route('product.product');
+        return redirect('product');
 
     }
 }
