@@ -37,7 +37,15 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //var_dump($request->all());exit();
+        $supplier = new Supplier;
+        $supplier->name = $request->post('name');
+        $supplier->address = $request->post('address');
+        $supplier->phone = $request->post('phone');
+        $supplier->save();
+         //$data = ['data1','data2','data3'];
+         //var_dump($_POST);
+         return redirect('supplier');
     }
 
     /**
@@ -59,7 +67,11 @@ class SupplierController extends Controller
      */
     public function edit($id)
     {
-        //
+        //var_dump($id);exit();
+        $supplier = Supplier::find($id);
+
+        // show the edit form and pass the nerd
+        return view('supplier.edit_supplier',compact('supplier','id'));
     }
 
     /**
@@ -69,9 +81,16 @@ class SupplierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
         //
+        //var_dump($request->all());exit();
+        $supplier = Supplier::find($request->id);
+        $supplier->name = $request->name;
+        $supplier->address = $request->address;
+        $supplier->phone = $request->phone;
+        $supplier->save();
+        return redirect('supplier');
     }
 
     /**
@@ -80,8 +99,13 @@ class SupplierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
         //
+        $supplier = Supplier::find($request->id);
+        $supplier->delete();
+
+
+        return redirect('supplier');
     }
 }

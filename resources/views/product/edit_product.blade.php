@@ -26,12 +26,12 @@
                 <label for="product_name">Name</label>
                 <input type="text" name="name" class="form-control" placeholder="Enter Product" value="{{ $product->name }}">
               </div>
-            
+
               <div class="col-xs-6">
                 <label for="product_stock">Price</label>
                 <input type="number" name="price" class="form-control" placeholder="0" value="{{ $product->price }}">
               </div>
-              
+
               <div class="col-xs-6">
                 <label for="product_stock">Stock</label>
                 <input type="number" name="stock" class="form-control" placeholder="0" value="{{ $product->stock }}">

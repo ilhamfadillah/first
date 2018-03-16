@@ -31,6 +31,14 @@ Route::get('supplier', function () {
     return view('supplier');
 });
 
+Route::get('/admin/add/supplier', function () {
+    return view('supplier/add_supplier');
+});
+
+Route::get('/admin/edit/supplier', function () {
+    return view('supplier/edit_supplier');
+});
+
 Route::get('/admin/add/user', function () {
     return view('user/add_user');
 });
@@ -62,3 +70,7 @@ Route::put('/product', 'ProductController@update');
 Route::delete('/product', 'ProductController@destroy');
 
 Route::get('/supplier', 'SupplierController@index');
+Route::post('/supplier', 'SupplierController@store');
+Route::get('/supplier/{id}', 'SupplierController@edit');
+Route::put('/supplier', 'SupplierController@update');
+Route::delete('/supplier', 'SupplierController@destroy');
