@@ -11,11 +11,13 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('users')->insert([
-          'username' => str_random(10),
-          'password' => bcrypt('secret'),
-          'email' => str_random(10).'@gmail.com',
-          'phone_number' => str_random(5),
-      ]);
+      for($i=0; $i<20; $i++){
+        DB::table('users')->insert([
+            'username' => str_random(10),
+            'password' => bcrypt('secret'),
+            'email' => str_random(10).'@gmail.com',
+            'phone_number' => str_random(5),
+        ]);
+      }
     }
 }
