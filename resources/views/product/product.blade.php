@@ -101,7 +101,7 @@
 
                   <!--Button Remove-->
                   <form class="" action="{{action('ProductController@destroy')}}" method="post">
-                    <button type="submit" class="glyphicon glyphicon-remove btn btn-danger">Delete</button>
+                    <button type="submit" class="glyphicon glyphicon-remove btn btn-danger" data-toggle="confirmation" data-placement="bottom">Delete</button>
                     {{csrf_field()}}
                     <input type="hidden" name="id" value="{{$product->id}}">
                     <input type="hidden" name="_method" value="delete">
@@ -112,6 +112,7 @@
               @endforeach
             </tbody>
           </table>
+          {{ $products->links() }}
         </div>
         <!-- /.box-body -->
       </div>

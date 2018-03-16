@@ -19,6 +19,10 @@ Route::get('admin', function () {
     return view('admin');
 });
 
+Route::get('login', function () {
+    return view('login_content');
+});
+
 Route::get('user', function () {
     return view('user');
 });
@@ -56,6 +60,7 @@ Route::get('/admin/edit/product', function () {
 });
 
 Route::get('/admin', 'AdminController@index');
+Route::get('/login', 'AdminController@login');
 
 Route::get('/user', 'UserController@index');
 Route::post('/user', 'UserController@store');

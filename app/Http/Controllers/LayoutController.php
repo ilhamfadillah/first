@@ -23,4 +23,9 @@ class LayoutController extends Controller
     {
         return view("latihan.kedua");
     }
+
+    public function login()
+    {
+        return view("login.login");
+    }
 }

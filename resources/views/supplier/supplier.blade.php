@@ -47,7 +47,7 @@
 
                       <a href="{{ action('SupplierController@edit', ['id' => $supplier->id]) }}" class="btn btn-primary">Edit</a>
 
-                      <form class="" action="{{action('SupplierController@destroy')}}" method="post">
+                      <form class="delete" action="{{action('SupplierController@destroy')}}" method="post">
                         <button type="submit" class="btn btn-danger">Delete</button>
                         {{csrf_field()}}
                         <input type="hidden" name="id" value="{{$supplier->id}}">
@@ -59,6 +59,7 @@
                   @endforeach
                 </tbody>
             </table>
+            {{ $suppliers->links() }}
           </div>
           <!-- /.box-body -->
         </div>
