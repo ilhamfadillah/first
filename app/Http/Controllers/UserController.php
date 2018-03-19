@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Auth;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
@@ -17,8 +18,30 @@ class UserController extends Controller
      */
     public function index()
     {
+
         $users = User::paginate(10);
         return view("user.user")->with('users', $users);
+    }
+
+    public function login(Request $request)
+    {
+      //var_dump(request('username')); exit();
+      $this->middleware('guest')->except('logout');
+      if(Auth::attempt(['username' => 'PoloVista', 'password' => 'secret'])){
+          //var_dump(Auth::user()); exit();
+          //exit('berhasil');
+          //$user = Auth::user();
+          return view('admin');
+        }else{
+          //ar_dump($request->all());
+          exit('gagal');
+        }
+    }
+
+    public function logout()
+    {
+      Auth::logout();
+      return view('login');
     }
 
     public function store(Request $request)

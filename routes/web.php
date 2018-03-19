@@ -23,6 +23,10 @@ Route::get('login', function () {
     return view('login_content');
 });
 
+Route::get('logout', function () {
+    return view('login_content');
+});
+
 Route::get('user', function () {
     return view('user');
 });
@@ -60,22 +64,32 @@ Route::get('/admin/edit/product', function () {
 });
 
 Route::get('/admin', 'AdminController@index');
-Route::get('/login', 'AdminController@login');
+Route::get('/login', ['as' => 'login', 'uses'=>'AdminController@login']);
 
-Route::get('/user', 'UserController@index');
-Route::post('/user', 'UserController@store');
-Route::get('/user/{id}', 'UserController@edit');
-Route::put('/user', 'UserController@update');
-Route::delete('/user', 'UserController@destroy');
+Route::post('/user/login', 'UserController@login');
 
-Route::get('/product', 'ProductController@index');
-Route::post('/product', 'ProductController@store');
-Route::get('/product/{id}', 'ProductController@edit');
-Route::put('/product', 'ProductController@update');
-Route::delete('/product', 'ProductController@destroy');
+Route::group(['middleware' => 'auth'], function () {
+  Route::post('/user/login', 'UserController@login');
+  Route::post('/user/logout', 'UserController@logout');
+  Route::get('/user', 'UserController@index');
+  Route::post('/user', 'UserController@store');
+  Route::get('/user/{id}', 'UserController@edit');
+  Route::put('/user', 'UserController@update');
+  Route::delete('/user', 'UserController@destroy');
+});
 
-Route::get('/supplier', 'SupplierController@index');
-Route::post('/supplier', 'SupplierController@store');
-Route::get('/supplier/{id}', 'SupplierController@edit');
-Route::put('/supplier', 'SupplierController@update');
-Route::delete('/supplier', 'SupplierController@destroy');
+Route::group(['middleware' => 'auth'], function () {
+  Route::get('/product', 'ProductController@index');
+  Route::post('/product', 'ProductController@store');
+  Route::get('/product/{id}', 'ProductController@edit');
+  Route::put('/product', 'ProductController@update');
+  Route::delete('/product', 'ProductController@destroy');
+});
+
+Route::group(['middleware' => 'auth'], function () {
+  Route::get('/supplier', 'SupplierController@index');
+  Route::post('/supplier', 'SupplierController@store');
+  Route::get('/supplier/{id}', 'SupplierController@edit');
+  Route::put('/supplier', 'SupplierController@update');
+  Route::delete('/supplier', 'SupplierController@destroy');
+});
