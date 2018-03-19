@@ -68,27 +68,28 @@ Route::get('/login', ['as' => 'login', 'uses'=>'AdminController@login']);
 
 Route::post('/user/login', 'UserController@login');
 
+Route::group(['prefix' => 'user',  'middleware' => 'auth'], function(){
+  //Route::post('/login', 'UserController@login');
+  Route::get('/logout', 'UserController@logout');
+  Route::get('/', 'UserController@index');
+  Route::post('/', 'UserController@store');
+  Route::get('/{id}', 'UserController@edit');
+  Route::put('/', 'UserController@update');
+  Route::delete('/', 'UserController@destroy');
+});
 
-  Route::post('/user/login', 'UserController@login');
-  Route::get('/user/logout', 'UserController@logout');
-  Route::get('/user', 'UserController@index');
-  Route::post('/user', 'UserController@store');
-  Route::get('/user/{id}', 'UserController@edit');
-  Route::put('/user', 'UserController@update');
-  Route::delete('/user', 'UserController@destroy');
+Route::group(['prefix' => 'product',  'middleware' => 'auth'], function(){
+  Route::get('/', 'ProductController@index');
+  Route::post('/', 'ProductController@store');
+  Route::get('/{id}', 'ProductController@edit');
+  Route::put('/', 'ProductController@update');
+  Route::delete('/', 'ProductController@destroy');
+});
 
-
-
-  Route::get('/product', 'ProductController@index');
-  Route::post('/product', 'ProductController@store');
-  Route::get('/product/{id}', 'ProductController@edit');
-  Route::put('/product', 'ProductController@update');
-  Route::delete('/product', 'ProductController@destroy');
-
-
-
-  Route::get('/supplier', 'SupplierController@index');
-  Route::post('/supplier', 'SupplierController@store');
-  Route::get('/supplier/{id}', 'SupplierController@edit');
-  Route::put('/supplier', 'SupplierController@update');
-  Route::delete('/supplier', 'SupplierController@destroy');
+Route::group(['prefix' => 'supplier',  'middleware' => 'auth'], function(){
+  Route::get('/', 'SupplierController@index');
+  Route::post('/', 'SupplierController@store');
+  Route::get('/{id}', 'SupplierController@edit');
+  Route::put('/', 'SupplierController@update');
+  Route::delete('/', 'SupplierController@destroy');
+});

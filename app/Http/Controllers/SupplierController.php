@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Supplier;
 use App\Http\Controllers\Controller;
+use Auth;
 
 class SupplierController extends Controller
 {
@@ -15,6 +16,9 @@ class SupplierController extends Controller
      */
     public function index()
     {
+        if (Auth::user() == false){
+          return redirect('login');
+        }
         $suppliers = Supplier::paginate(10);
         return view("supplier.supplier")->with('suppliers', $suppliers);
     }

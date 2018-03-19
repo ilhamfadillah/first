@@ -19,6 +19,11 @@ class UserController extends Controller
     public function index()
     {
 
+      if (Auth::user() == false){
+        return redirect('login');
+      }
+
+
         $users = User::paginate(10);
         return view("user.user")->with('users', $users);
     }
@@ -26,12 +31,20 @@ class UserController extends Controller
     public function login(Request $request)
     {
       //var_dump(request('username')); exit();
-      $this->middleware('guest')->except('logout');
+      //$this->middleware('guest')->except('logout');
       $login = Auth::attempt(['username' => 'PoloVista', 'password' => 'secret']);
+
+      $login_user = Auth::attempt(['username' => 'user', 'password' => 'user']);
       //var_dump(auth::user()); exit();
       //var_dump($login); exit();
+
+/*
+      $login = new Login;
+      $login->username = $request->post('username');
+      $login->password = $reques
+*/
       if($login){
-          //var_dump(Auth::user()); exit();
+          var_dump(Auth::user()); exit();
           //exit('berhasil');
           //$user = Auth::user();
           return view('admin');

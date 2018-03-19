@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
+use Auth;
+
 
 class ProductController extends Controller
 {
@@ -17,6 +19,23 @@ class ProductController extends Controller
 
      public function index()
     {
+        //var_dump(Auth::user());exit();
+        /*
+        if (Auth::user() == false){
+          return redirect('login');
+          //exit('bukan user');
+        }
+        */
+
+        $user = Auth::user();
+        var_dump($user->role); exit();
+
+
+        if($user->role == 'user'){
+          return redirect('admin');
+        }
+
+
         $products = Product::paginate(10);
         return view("product.product")->with('products', $products);
 
