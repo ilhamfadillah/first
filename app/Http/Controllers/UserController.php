@@ -27,7 +27,10 @@ class UserController extends Controller
     {
       //var_dump(request('username')); exit();
       $this->middleware('guest')->except('logout');
-      if(Auth::attempt(['username' => 'PoloVista', 'password' => 'secret'])){
+      $login = Auth::attempt(['username' => 'PoloVista', 'password' => 'secret']);
+      //var_dump(auth::user()); exit();
+      //var_dump($login); exit();
+      if($login){
           //var_dump(Auth::user()); exit();
           //exit('berhasil');
           //$user = Auth::user();
@@ -41,7 +44,8 @@ class UserController extends Controller
     public function logout()
     {
       Auth::logout();
-      return view('login');
+      //exit();
+      return view('login.login_content');
     }
 
     public function store(Request $request)
