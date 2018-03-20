@@ -43,12 +43,13 @@
                     <td>{{ $supplier->name }}</td>
                     <td>{{ $supplier->address }}</td>
                     <td>{{ $supplier->phone }}</td>
-                    <td>
-
-                      <a href="{{ action('SupplierController@edit', ['id' => $supplier->id]) }}" class="btn btn-primary">Edit</a>
+                    <td class="text-center">
 
                       <form class="delete" action="{{action('SupplierController@destroy')}}" method="post">
-                        <button type="submit" class="btn btn-danger">Delete</button>
+
+                        <a href="{{ action('SupplierController@edit', ['id' => $supplier->id]) }}" class="btn btn-primary">Edit</a>
+
+                        <button type="submit" onclick="return confirm('Wanna Delete ?')" class="btn btn-danger">Delete</button>
                         {{csrf_field()}}
                         <input type="hidden" name="id" value="{{$supplier->id}}">
                         <input type="hidden" name="_method" value="delete">

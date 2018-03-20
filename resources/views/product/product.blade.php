@@ -94,14 +94,14 @@
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->stock }}</td>
                 <td class="text-center">
-                  <!--Button Edit-->
-                  <a href="{{ action('ProductController@edit', ['id' => $product->id]) }}" name="button" class="btn btn-info">
-                    <span class="glyphicon glyphicon-pencil">Edit</span>
-                  </a>
-
-                  <!--Button Remove-->
                   <form class="" action="{{action('ProductController@destroy')}}" method="post">
-                    <button type="submit" class="glyphicon glyphicon-remove btn btn-danger" data-toggle="confirmation" data-placement="bottom">Delete</button>
+                    <!--Button Edit-->
+                    <a href="{{ action('ProductController@edit', ['id' => $product->id]) }}" name="button" class="btn btn-info">
+                      <span class="glyphicon glyphicon-pencil">Edit</span>
+                    </a>
+
+                    <!--Button Remove-->
+                    <button onclick="return confirm('Are you sure?')" type="submit" class="glyphicon glyphicon-remove btn btn-danger" data-toggle="confirmation" data-placement="bottom">Delete</button>
                     {{csrf_field()}}
                     <input type="hidden" name="id" value="{{$product->id}}">
                     <input type="hidden" name="_method" value="delete">
@@ -118,5 +118,6 @@
       </div>
       <!-- /.box -->
     </div>
+
   </section>
 @endsection

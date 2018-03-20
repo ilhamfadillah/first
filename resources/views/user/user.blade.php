@@ -37,7 +37,6 @@
                 <tr>
                   <th class="text-center">Id</th>
                   <th class="text-center">Username</th>
-                  <th class="text-center">Password</th>
                   <th class="text-center">Email</th>
                   <th class="text-center">Phone Number</th>
                   <th class="text-center">Action</th>
@@ -48,24 +47,24 @@
                 <tr>
                   <td class="text-center">{{ $user->id }}</td>
                   <td>{{ $user->username }}</td>
-                  <td>{{ $user->password }}</td>
                   <td>{{ $user->email }}</td>
                   <td>{{ $user->phone_number }}</td>
                   <td class="text-center">
-                    <!--Button Edit-->
-                    <a href="{{ action('UserController@edit', ['id' => $user->id]) }}"  name="edit" class="btn btn-info">
-                      <span class="glyphicon glyphicon-pencil">Edit</span>
-                    </a>
-
-                    <!--Button Remove-->
                     <form class="" action="{{action('UserController@destroy')}}" method="post">
-                    <button type="submit" name="button" class="btn btn-danger">
-                      <span class="glyphicon glyphicon-remove">Delete</span>
-                    </button>
-                    {{csrf_field()}}
-                    <input type="hidden" name="id" value="{{$user->id}}">
-                    <input type="hidden" name="_method" value="delete">
-                  </form>
+
+                      <!--Button Edit-->
+                      <a href="{{ action('UserController@edit', ['id' => $user->id]) }}"  name="edit" class="btn btn-info">
+                        <span class="glyphicon glyphicon-pencil">Edit</span>
+                      </a>
+
+                      <!--Button Remove-->
+                      <button type="submit" onclick="return confirm('Wanna Delete ?')" name="button" class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove">Delete</span>
+                      </button>
+                      {{csrf_field()}}
+                      <input type="hidden" name="id" value="{{$user->id}}">
+                      <input type="hidden" name="_method" value="delete">
+                    </form>
                   </td>
                 </tr>
                 @endforeach
