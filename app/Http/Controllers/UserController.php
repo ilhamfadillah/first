@@ -20,6 +20,7 @@ class UserController extends Controller
     {
 
       if (Auth::user() == false){
+        //var_dump(Auth::user()); exit();
         return redirect('login');
       }
 
@@ -30,26 +31,31 @@ class UserController extends Controller
 
     public function login(Request $request)
     {
+
       //var_dump(request('username')); exit();
       //$this->middleware('guest')->except('logout');
-      $login = Auth::attempt(['username' => 'PoloVista', 'password' => 'secret']);
+      //$login = Auth::attempt(['username' => 'PoloVista', 'password' => 'secret']);
 
-      $login_user = Auth::attempt(['username' => 'user', 'password' => 'user']);
       //var_dump(auth::user()); exit();
       //var_dump($login); exit();
 
-/*
-      $login = new Login;
-      $login->username = $request->post('username');
-      $login->password = $reques
-*/
+      //$login_user = Auth::attempt(['username' => 'user', 'password' => 'user']);
+
+      $username = $request->post('username');
+      $password = $request->post('password');
+
+
+      //$validator = Validator::make(Input::all(), $users);
+      //var_dump($username); var_dump($password); exit();
+      $login = Auth::attempt(['username' => $username, 'password' => $password]);
+
       if($login){
-          var_dump(Auth::user()); exit();
+          //var_dump(Auth::user()); exit();
           //exit('berhasil');
           //$user = Auth::user();
           return view('admin');
         }else{
-          //ar_dump($request->all());
+          //var_dump($request->all());
           exit('gagal');
         }
     }

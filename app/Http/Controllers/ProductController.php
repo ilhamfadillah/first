@@ -28,7 +28,7 @@ class ProductController extends Controller
         */
 
         $user = Auth::user();
-        var_dump($user->role); exit();
+        //var_dump($user->role); exit();
 
 
         if($user->role == 'user'){
