@@ -43,11 +43,12 @@ class UserController extends Controller
 
       $username = $request->post('username');
       $password = $request->post('password');
+      $role = $request->post('role');
 
 
-      //$validator = Validator::make(Input::all(), $users);
-      //var_dump($username); var_dump($password); exit();
+      //validator = Validator::make(Input::all(), $users);
       $login = Auth::attempt(['username' => $username, 'password' => $password]);
+      //var_dump($login); exit();
 
       if($login){
           //var_dump(Auth::user()); exit();
@@ -55,7 +56,7 @@ class UserController extends Controller
           //$user = Auth::user();
           return view('admin');
         }else{
-          //var_dump($request->all());
+          //var_dump($request->all()); exit();
           exit('gagal');
         }
     }
