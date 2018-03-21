@@ -14,7 +14,7 @@ class AddRoleToUsers extends Migration
     public function up()
     {
       Schema::table('users', function($table){
-        $table->enum('role', ['admin', 'user']);
+        $table->string('role');
       });
     }
 
