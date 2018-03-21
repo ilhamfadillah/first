@@ -17,17 +17,17 @@
 
               <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" name="name" placeholder="Name Supplier" value="">
+                <input type="text" class="form-control" name="name" placeholder="Name" value="" required="true">
               </div>
 
               <div class="form-group">
                 <label for="address">Address</label >
-                <textarea name="address" class="form-control" rows="4" cols="80" placeholder="Address"></textarea>
+                <textarea name="address" class="form-control" rows="4" cols="80" placeholder="Address" required="true"></textarea>
               </div>
 
               <div class="form-group">
                 <label for="phone">Phone</label>
-                <input type="text" class="form-control" name="phone" placeholder="Phone Number" value="">
+                <input type="text" class="form-control" name="phone" placeholder="Phone Number" value="" required="true">
               </div>
 
               <input type="submit" name="" value="ADD" class="btn btn-primary">

@@ -14,15 +14,15 @@
           {{ Form::open(array('url' => 'product')) }}
             <div class="form-group">
               <label for="product_name">Name</label>
-              <input type="text" name="name" class="form-control" placeholder="Enter Produk">
+              <input type="text" name="name" class="form-control" placeholder="Enter Produk" required="true">
             </div>
             <div class="form-group">
               <label for="product_stock">Price</label>
-              <input type="number" name="price" class="form-control" placeholder="0">
+              <input type="number" name="price" class="form-control" placeholder="0" required="true">
             </div>
             <div class="form-group">
               <label for="product_stock">Stock</label>
-              <input type="number" name="stock" class="form-control" placeholder="0">
+              <input type="number" name="stock" class="form-control" placeholder="0" required="true">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
