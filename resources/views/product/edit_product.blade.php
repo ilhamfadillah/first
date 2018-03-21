@@ -24,17 +24,17 @@
             <div class="form-group">
               <div class="col-xs-6">
                 <label for="product_name">Name</label>
-                <input type="text" name="name" class="form-control" placeholder="Enter Product" value="{{ $product->name }}">
+                <input type="text" name="name" class="form-control" placeholder="Enter Product" value="{{ $product->name }}" required="true">
               </div>
 
               <div class="col-xs-6">
                 <label for="product_stock">Price</label>
-                <input type="number" name="price" class="form-control" placeholder="0" value="{{ $product->price }}">
+                <input type="number" name="price" class="form-control" placeholder="0" value="{{ $product->price }}" required="true">
               </div>
 
               <div class="col-xs-6">
                 <label for="product_stock">Stock</label>
-                <input type="number" name="stock" class="form-control" placeholder="0" value="{{ $product->stock }}">
+                <input type="number" name="stock" class="form-control" placeholder="0" value="{{ $product->stock }}" required="true">
               </div>
               <button type="submit" class="btn btn-primary">Update</button>
             </div>

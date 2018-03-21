@@ -55,10 +55,10 @@
 
   </div>
   <!-- /.content-wrapper -->
+
   <footer class="main-footer">
     @include('layouts.footer')
   </footer>
-
   <!-- Control Sidebar -->
   @include('layouts.sidebar_control')
 </div>
