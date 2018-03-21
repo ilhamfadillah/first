@@ -1,0 +1,5 @@
+ id | username |                           password                           |        email         | phone_number | created_at | updated_at | role 
+----+----------+--------------------------------------------------------------+----------------------+--------------+------------+------------+------
+  1 |          | $2y$10$dV6xDQSskqMv/0LD.dg7.uIlwXSmijnA2Zp9LFqBdhdlsIaYozXj. | qQU51S0zJC@gmail.com | hgF49        |            |            | 
+(1 row)
+
