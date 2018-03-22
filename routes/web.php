@@ -19,6 +19,10 @@ Route::get('admin', function () {
     return view('admin');
 });
 
+Route::get('employee', function () {
+    return view('createEmployee');
+});
+
 Route::get('login', function () {
     return view('login_content');
 });
@@ -93,3 +97,6 @@ Route::group(['prefix' => 'supplier',  'middleware' => 'auth'], function(){
   Route::put('/', 'SupplierController@update');
   Route::delete('/', 'SupplierController@destroy');
 });
+
+Route::get('employee', 'EmployeeController@create'); //->name('employee.create');
+Route::post('employee', 'EmployeeController@store')->name('employee.store');
