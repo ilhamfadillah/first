@@ -51,24 +51,24 @@
         var val = document.getElementsByClassName('val');
 
         if(name==""){
-          val[0].innerHTML = "Name is Empty"
+          val[0].innerHTML = "Name is Empty";
           return false;
         }else{
-          val[0].innerHTML = ""
+          val[0].innerHTML = "";
         }
 
         if(address==""){
-          val[1].innerHTML = "address is Empty"
+          val[1].innerHTML = "address is Empty";
           return false;
         }else{
-          val[1].innerHTML = ""
+          val[1].innerHTML = "";
         }
 
         if(phone==""){
-          val[2].innerHTML = "phone is Empty"
+          val[2].innerHTML = "phone is Empty";
           return false;
         }else{
-          val[2].innerHTML = ""
+          val[2].innerHTML = "";
         }
 
         return true;

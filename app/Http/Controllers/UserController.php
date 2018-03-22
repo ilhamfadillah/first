@@ -76,6 +76,7 @@ class UserController extends Controller
         $users->password = $request->post('password');
         $users->email = $request->post('email');
         $users->phone_number = $request->post('phone_number');
+        $users->role = $request->post('role');
         $users->save();
         return redirect('user');
     }

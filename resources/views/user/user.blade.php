@@ -39,6 +39,7 @@
                   <th class="text-center">Username</th>
                   <th class="text-center">Email</th>
                   <th class="text-center">Phone Number</th>
+                  <th class="text-center">Role</th>
                   <th class="text-center">Action</th>
                 </tr>
               </thead>
@@ -49,6 +50,7 @@
                   <td>{{ $user->username }}</td>
                   <td>{{ $user->email }}</td>
                   <td>{{ $user->phone_number }}</td>
+                  <td>{{ $user->role }}</td>
                   <td class="text-center">
                     <form class="" action="{{action('UserController@destroy')}}" method="post">
 

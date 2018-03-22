@@ -41,24 +41,24 @@
       var val = document.getElementsByClassName('val');
 
       if(name==""){
-        val[0].innerHTML = "Name is Empty"
+        val[0].innerHTML = "Name is Empty";
         return false;
       }else{
-        val[0].innerHTML = ""
+        val[0].innerHTML = "";
       }
 
       if(price==""){
-        val[1].innerHTML = "price is Empty"
+        val[1].innerHTML = "price is Empty";
         return false;
       }else{
-        val[1].innerHTML = ""
+        val[1].innerHTML = "";
       }
 
       if(stock==""){
-        val[2].innerHTML = "Stock is Empty"
+        val[2].innerHTML = "Stock is Empty";
         return false;
       }else{
-        val[2].innerHTML = ""
+        val[2].innerHTML = "";
       }
 
       return true;
