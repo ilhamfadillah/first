@@ -14,7 +14,7 @@
           {{ Form::open(array('url' => 'product', 'name' => 'add_product', 'onsubmit' => 'return fill()')) }}
             <div class="form-group">
               <label for="product_name">Name</label>
-              <input type="text" name="name" class="name form-control" placeholder="Enter Produk">
+              <input type="text" name="name" class="form-control" placeholder="Enter Produk">
               <span class="val"></span>
             </div>
             <div class="form-group">

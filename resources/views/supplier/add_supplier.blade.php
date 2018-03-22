@@ -13,21 +13,24 @@
 
           <div class="col-lg-4">
 
-            {{ Form::open(array('url' => 'supplier')) }}
+            {{ Form::open(array('url' => 'supplier', 'name' => 'add_supplier', 'onsubmit' => 'return fill()')) }}
 
               <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" name="name" placeholder="Name" value="" required="true">
+                <input type="text" class="form-control" name="name" placeholder="Name">
+                <span class="val"></span>
               </div>
 
               <div class="form-group">
                 <label for="address">Address</label >
-                <textarea name="address" class="form-control" rows="4" cols="80" placeholder="Address" required="true"></textarea>
+                <textarea name="address" class="form-control" rows="4" cols="80" placeholder="Address"></textarea>
+                <span class="val"></span>
               </div>
 
               <div class="form-group">
                 <label for="phone">Phone</label>
-                <input type="text" class="form-control" name="phone" placeholder="Phone Number" value="" required="true">
+                <input type="text" class="form-control" name="phone" placeholder="Phone Number" onkeypress="return just_num(event)">
+                <span class="val"></span>
               </div>
 
               <input type="submit" name="" value="ADD" class="btn btn-primary">
@@ -40,7 +43,42 @@
       </div>
     </section>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-@endsection
+    <script type="text/javascript">
+      function fill(){
+        var name = document.forms["add_supplier"]["name"].value;
+        var address = document.forms["add_supplier"]["address"].value;
+        var phone = document.forms["add_supplier"]["phone"].value;
+        var val = document.getElementsByClassName('val');
+
+        if(name==""){
+          val[0].innerHTML = "Name is Empty"
+          return false;
+        }else{
+          val[0].innerHTML = ""
+        }
+
+        if(address==""){
+          val[1].innerHTML = "address is Empty"
+          return false;
+        }else{
+          val[1].innerHTML = ""
+        }
+
+        if(phone==""){
+          val[2].innerHTML = "phone is Empty"
+          return false;
+        }else{
+          val[2].innerHTML = ""
+        }
+
+        return true;
+      }
+
+        function just_num(evt){
+          var charCode = (evt.which) ? evt.which : event.keyCode
+          if (charCode > 31 && (charCode < 48 || charCode > 57))
+            return false;
+          return true;
+        }
+    </script>
+    @endsection
