@@ -25,6 +25,7 @@ class ProductsTableSeeder extends Seeder
         $product->name = str_random(10);
         $product->price = rand(2000, 4000);
         $product->stock = rand(10, 50);
+        $product->category= 'book';
         $product->save();
       }
     }

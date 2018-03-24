@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', 'Supplier')
+@section('title', 'Category')
 
 @section('content')
 
@@ -10,11 +10,10 @@
 
   <section class="content">
 
-
     <div class="row">
 
       <div class="col-xs-12 text-right">
-        <a href="{{ url('/admin/add/supplier') }}" class="btn btn-primary">
+        <a href="{{ url('/admin/add/category') }}" class="btn btn-primary">
           <span class="glyphicon glyphicon-plus">ADD</span>
         </a>
       </div>
@@ -30,28 +29,26 @@
                 <thead>
                   <tr>
                     <th>Id</th>
+                    <th>Product id</th>
                     <th>Name</th>
-                    <th>Address</th>
-                    <th>Phone</th>
                     <th>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  @foreach($suppliers as $supplier)
+                  @foreach($categories as $category)
                   <tr>
-                    <td>{{ $supplier->id }}</td>
-                    <td>{{ $supplier->name }}</td>
-                    <td>{{ $supplier->address }}</td>
-                    <td>{{ $supplier->phone }}</td>
+                    <td>{{ $category->id }}</td>
+                    <td>{{ $category->product_id }}</td>
+                    <td>{{ $category->name }}</td>
                     <td class="text-center">
 
-                      <form class="delete" action="{{action('SupplierController@destroy')}}" method="post">
+                      <form class="delete" action="{{action('CategoryController@destroy')}}" method="post">
 
-                        <a href="{{ action('SupplierController@edit', ['id' => $supplier->id]) }}" class="btn btn-primary">Edit</a>
+                        <a href="{{ action('CategoryController@edit', ['id' => $category->id]) }}" class="btn btn-primary">Edit</a>
 
                         <button type="submit" class="btn btn-danger" id="callconfirm">Delete</button>
                         {{csrf_field()}}
-                        <input type="hidden" name="id" value="{{$supplier->id}}">
+                        <input type="hidden" name="id" value="{{$category->id}}">
                         <input type="hidden" name="_method" value="delete">
                       </form>
                     </td>
@@ -59,7 +56,7 @@
                   @endforeach
                 </tbody>
             </table>
-            {{ $suppliers->links() }}
+
           </div>
           <!-- /.box-body -->
         </div>

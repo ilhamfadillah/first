@@ -27,6 +27,14 @@
               <input type="text" name="stock" class="form-control" placeholder="0" onkeypress="return just_num(event)">
               <span class="val"></span>
             </div>
+            <div class="form-group">
+             <label for="sel1">Select list:</label>
+             <select class="form-control" id="sel1">
+               @foreach($categories as $category)
+               <option>{{ $category->name }}</option>
+               @endforeach
+            </select>
+            </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
         </div>

@@ -28,6 +28,7 @@
     <li><a href="{{ url('user') }}">User</a></li>
     <li><a href="{{ url('product') }}">Product</a></li>
     <li><a href="{{ url('supplier') }}">Supplier</a></li>
+    <li><a href="{{ url('category') }}">Product Category</a></li>
   </ul>
 </section>
 <!-- /.sidebar -->

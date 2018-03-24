@@ -7,6 +7,10 @@
   <meta charset="utf-8">
   <!-- Tell the browser to be responsive to screen width -->
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
+
   <!-- Bootstrap 3.3.7 -->
   <link rel="stylesheet" href="{{ URL::asset('/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">
   <!-- Font Awesome -->
@@ -63,11 +67,10 @@
   @include('layouts.sidebar_control')
 </div>
 <!-- ./wrapper -->
-
 <!-- jQuery 3 -->
 <script src="{{ URL::asset('bower_components/jquery/dist/jquery.min.js') }}"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="{{ URL::asset('bower_components/jquery-ui/jquery-ui.min.js') }}"></script>
+<script src="{{ URL::asset('https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.0-rc.2/jquery-ui.js') }}"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
   $.widget.bridge('uibutton', $.ui.button);
@@ -101,5 +104,6 @@
 <script src="{{ URL::asset('/dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ URL::asset('/dist/js/demo.js') }}"></script>
+@yield('jquery')
 </body>
 </html>

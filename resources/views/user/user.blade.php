@@ -1,10 +1,42 @@
 @extends('layouts.default')
 
 @section('title', 'User')
+@section('jquery')
+<script type="text/javascript">
+$(document).ready(function() {
+  $(".delete").click(function(event){
+    var id = $(this).attr('user_id');
+    alert(id);
+    event.preventDefault();
+    $( "#dialog" ).dialog({
+        resizable: false,
+        height: "auto",
+        width: 400,
+        modal: true,
+        buttons: {
+          "Delete all items": function() {
+            $("#user-"+id).submit();
 
+
+          },
+          Cancel: function() {
+            $( this ).dialog( "close" );
+          }
+        }
+      });
+    //$("form").submit(function(e){
+      //e.preventDefault();
+
+      });
+    });
+  //});
+
+</script>
+@endsection
 @section('content')
 
   <!-- Content Header (Page header) -->
+
   <section class="content-header">
     <h1>
       Data User
@@ -52,7 +84,8 @@
                   <td>{{ $user->phone_number }}</td>
                   <td>{{ $user->role }}</td>
                   <td class="text-center">
-                    <form class="" action="{{action('UserController@destroy')}}" method="post">
+                    <form class="" id="user-{{$user->id}}" action="{{action('UserController@destroy')}}" method="post">
+                      {{csrf_field()}}
 
                       <!--Button Edit-->
                       <a href="{{ action('UserController@edit', ['id' => $user->id]) }}"  name="edit" class="btn btn-info">
@@ -60,10 +93,9 @@
                       </a>
 
                       <!--Button Remove-->
-                      <button type="submit" onclick="return confirm('Wanna Delete ?')" name="button" class="btn btn-danger">
+                      <button type="submit" name="button" user_id="{{$user->id}}" class="btn btn-danger delete">
                         <span class="glyphicon glyphicon-remove">Delete</span>
                       </button>
-                      {{csrf_field()}}
                       <input type="hidden" name="id" value="{{$user->id}}">
                       <input type="hidden" name="_method" value="delete">
                     </form>
@@ -80,4 +112,8 @@
       </div>
     </div>
     </section>
-@endsection
+    <div id="dialog" title="Empty the recycle bin?">
+      <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
+    </div>
+
+    @endsection

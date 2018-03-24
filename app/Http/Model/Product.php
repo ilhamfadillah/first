@@ -11,6 +11,11 @@ class Product extends Model
 
 {
 
+    public function category()
+    {
+      return $this->belongsTo('App\Category');
+    }
+
     /**
 
      * The attributes that are mass assignable.
@@ -23,7 +28,7 @@ class Product extends Model
 
     protected $fillable = [
 
-        'name', 'price', 'stock'
+        'name', 'price', 'stock', 'category'
 
     ];
 

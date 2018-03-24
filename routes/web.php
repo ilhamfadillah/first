@@ -39,6 +39,10 @@ Route::get('product', function () {
     return view('product');
 });
 
+Route::get('category', function () {
+    return view('category');
+});
+
 Route::get('supplier', function () {
     return view('supplier');
 });
@@ -67,6 +71,10 @@ Route::get('/admin/edit/product', function () {
     return view('product/edit_product');
 });
 
+Route::get('/admin/add/category', function () {
+    return view('category/add_category');
+});
+
 Route::get('/admin', 'AdminController@index');
 Route::get('/login', ['as' => 'login', 'uses'=>'AdminController@login']);
 
@@ -89,7 +97,7 @@ Route::group(['prefix' => 'product',  'middleware' => 'auth'], function(){
   Route::put('/', 'ProductController@update');
   Route::delete('/', 'ProductController@destroy');
 });
-
+        
 Route::group(['prefix' => 'supplier',  'middleware' => 'auth'], function(){
   Route::get('/', 'SupplierController@index');
   Route::post('/', 'SupplierController@store');
@@ -100,3 +108,11 @@ Route::group(['prefix' => 'supplier',  'middleware' => 'auth'], function(){
 
 Route::get('employee', 'EmployeeController@create'); //->name('employee.create');
 Route::post('employee', 'EmployeeController@store')->name('employee.store');
+
+Route::group(['prefix' => 'category',  'middleware' => 'auth'], function(){
+  Route::get('/', 'CategoryController@index');
+  Route::post('/', 'CategoryController@store');
+  Route::get('/{id}', 'CategoryController@edit');
+  Route::put('/', 'CategoryController@update');
+  Route::delete('/', 'CategoryController@destroy');
+});
