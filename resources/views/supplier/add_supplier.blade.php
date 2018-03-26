@@ -1,7 +1,16 @@
 @extends('layouts.default')
 
 @section('title', 'Add Supplier')
-
+@section('jquery')
+  <script type="text/javascript">
+  function just_num(evt){
+    var charCode = (evt.which) ? evt.which : event.keyCode
+    if (charCode > 31 && (charCode < 48 || charCode > 57))
+      return false;
+    return true;
+  }
+  </script>
+@endsection
 @section('content')
     <section class="content-header">
       <h1 class="text-center">Add New Supplier</h1>
@@ -17,19 +26,19 @@
 
               <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" class="form-control" name="name" placeholder="Name">
+                <input type="text" data-validation-length="min1" class="form-control" name="name" placeholder="Name">
                 <span class="val"></span>
               </div>
 
               <div class="form-group">
                 <label for="address">Address</label >
-                <textarea name="address" class="form-control" rows="4" cols="80" placeholder="Address"></textarea>
+                <textarea name="address" data-validation-length="min4" class="form-control" rows="4" cols="80" placeholder="Address"></textarea>
                 <span class="val"></span>
               </div>
 
               <div class="form-group">
                 <label for="phone">Phone</label>
-                <input type="text" class="form-control" name="phone" placeholder="Phone Number" onkeypress="return just_num(event)">
+                <input type="text" data-validation="number" data-validation-length="min5" class="form-control" name="phone" placeholder="Phone Number" onkeypress="return just_num(event)">
                 <span class="val"></span>
               </div>
 

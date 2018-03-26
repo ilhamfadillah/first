@@ -1,7 +1,38 @@
 @extends('layouts.default')
 
 @section('title', 'Supplier')
+@section('jquery')
+<script type="text/javascript">
+$(document).ready(function() {
+  $(".delete").click(function(event){
+    var id = $(this).attr('supplier_id');
+    alert(id);
+    event.preventDefault();
+    $( "#dialog" ).dialog({
+        resizable: false,
+        height: "auto",
+        width: 400,
+        modal: true,
+        buttons: {
+          "Delete all items": function() {
+            $("#supplier-"+id).submit();
 
+
+          },
+          Cancel: function() {
+            $( this ).dialog( "close" );
+          }
+        }
+      });
+    //$("form").submit(function(e){
+      //e.preventDefault();
+
+      });
+    });
+  //});
+
+</script>
+@endsection
 @section('content')
 
   <section class="content-header">
@@ -45,11 +76,11 @@
                     <td>{{ $supplier->phone }}</td>
                     <td class="text-center">
 
-                      <form class="delete" action="{{action('SupplierController@destroy')}}" method="post">
+                      <form id="supplier-{{$supplier->id}}" action="{{action('SupplierController@destroy')}}" method="post">
 
                         <a href="{{ action('SupplierController@edit', ['id' => $supplier->id]) }}" class="btn btn-primary">Edit</a>
 
-                        <button type="submit" class="btn btn-danger" id="callconfirm">Delete</button>
+                        <button type="submit" class="btn btn-danger delete" supplier_id="{{$supplier->id}}">Delete</button>
                         {{csrf_field()}}
                         <input type="hidden" name="id" value="{{$supplier->id}}">
                         <input type="hidden" name="_method" value="delete">
@@ -67,4 +98,7 @@
       </div>
     </div>
   </section>
+  <div id="dialog" title="Empty the recycle bin?">
+    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
+  </div>
 @endsection

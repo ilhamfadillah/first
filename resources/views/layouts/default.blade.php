@@ -104,6 +104,13 @@
 <script src="{{ URL::asset('/dist/js/pages/dashboard.js') }}"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="{{ URL::asset('/dist/js/demo.js') }}"></script>
+
+<script src="{{ URL::asset('//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js') }}"></script>
+<script>
+  $.validate({
+    lang: 'en'
+  });
+</script>
 @yield('jquery')
 </body>
 </html>

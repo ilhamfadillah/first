@@ -99,6 +99,7 @@ class UserController extends Controller
         $user->password = $request->password;
         $user->email = $request->email;
         $user->phone_number = $request->phone_number;
+        $user->role = $request->role;
         $user->save();
         return redirect('user');
     }
