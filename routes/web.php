@@ -39,12 +39,16 @@ Route::get('product', function () {
     return view('product');
 });
 
-Route::get('category', function () {
-    return view('category');
-});
-
 Route::get('supplier', function () {
     return view('supplier');
+});
+
+Route::get('category', function () {
+  return view('category');
+});
+
+Route::get('chainbox', function () {
+  return view('chainbox');
 });
 
 Route::get('/admin/add/supplier', function () {
@@ -97,7 +101,7 @@ Route::group(['prefix' => 'product',  'middleware' => 'auth'], function(){
   Route::put('/', 'ProductController@update');
   Route::delete('/', 'ProductController@destroy');
 });
-        
+
 Route::group(['prefix' => 'supplier',  'middleware' => 'auth'], function(){
   Route::get('/', 'SupplierController@index');
   Route::post('/', 'SupplierController@store');
@@ -115,4 +119,12 @@ Route::group(['prefix' => 'category',  'middleware' => 'auth'], function(){
   Route::get('/{id}', 'CategoryController@edit');
   Route::put('/', 'CategoryController@update');
   Route::delete('/', 'CategoryController@destroy');
+});
+
+Route::group(['prefix' => 'chainbox',  'middleware' => 'auth'], function(){
+  Route::get('/', 'ChainboxController@index');
+  Route::post('/', 'ChainboxController@store');
+  Route::get('/{id}', 'ChainboxController@edit');
+  Route::put('/', 'ChainboxController@update');
+  Route::delete('/', 'ChainboxController@destroy');
 });
