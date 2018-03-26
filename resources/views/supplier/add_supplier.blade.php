@@ -11,6 +11,29 @@
   }
   </script>
 @endsection
+@section('googlemap')
+<script>
+function initMap() {
+  var spot = {lat: 39.273437, lng:  -101.841896};
+
+  var map = new google.maps.Map(document.getElementById('mapx'), {
+    zoom: 7,
+    center: spot
+  });
+
+  var marker = new google.maps.Marker({
+    position: spot,
+    map: map
+  });
+}
+</script>
+@endsection
+<style media="screen">
+#mapx {
+      height: 400px;
+      width: 100%;
+     }
+</style>
 @section('content')
     <section class="content-header">
       <h1 class="text-center">Add New Supplier</h1>
@@ -45,49 +68,12 @@
               <input type="submit" name="" value="ADD" class="btn btn-primary">
 
             </form>
-
           </div>
+          <div id="mapx"></div>
 
         </div>
       </div>
     </section>
 
-    <script type="text/javascript">
-      function fill(){
-        var name = document.forms["add_supplier"]["name"].value;
-        var address = document.forms["add_supplier"]["address"].value;
-        var phone = document.forms["add_supplier"]["phone"].value;
-        var val = document.getElementsByClassName('val');
 
-        if(name==""){
-          val[0].innerHTML = "Name is Empty";
-          return false;
-        }else{
-          val[0].innerHTML = "";
-        }
-
-        if(address==""){
-          val[1].innerHTML = "address is Empty";
-          return false;
-        }else{
-          val[1].innerHTML = "";
-        }
-
-        if(phone==""){
-          val[2].innerHTML = "phone is Empty";
-          return false;
-        }else{
-          val[2].innerHTML = "";
-        }
-
-        return true;
-      }
-
-        function just_num(evt){
-          var charCode = (evt.which) ? evt.which : event.keyCode
-          if (charCode > 31 && (charCode < 48 || charCode > 57))
-            return false;
-          return true;
-        }
-    </script>
     @endsection

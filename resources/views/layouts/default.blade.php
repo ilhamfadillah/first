@@ -111,6 +111,9 @@
     lang: 'en'
   });
 </script>
+<script async defer src="{{ URL::asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyAZMlMUwcr14eaIykvKEywTlHeYj981EXs&callback=initMap') }}"></script>
+
 @yield('jquery')
+@yield('googlemap')
 </body>
 </html>

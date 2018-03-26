@@ -37,19 +37,12 @@ function just_num(evt){
             </div>
 
             <div class="form-group">
-             <label for="sel1">Select list:</label>
-
-             <select class="form-control" id="sel1">
-               @foreach($products as $product)
-               <option>{{ $product->category }}</option>
-               @endforeach
-            </select>
-
+              <label for="photo">Photo</label>
+              <input type="file" name="photo" value="">
             </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
-        </div>
       </div>
   </section>
 @endsection
