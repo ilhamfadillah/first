@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCountriesTable extends Migration
+class AddPhotoToProductsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateCountriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('countries', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('sortname');
-            $table->string('name');
-            $table->string('phonecode');
-            $table->timestamps();
+        Schema::table('products', function (Blueprint $table) {
+            //
+            $table->string('photo');
         });
     }
 
@@ -29,6 +26,8 @@ class CreateCountriesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('countries');
+        Schema::table('products', function (Blueprint $table) {
+            //
+        });
     }
 }

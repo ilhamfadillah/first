@@ -114,7 +114,7 @@ $(document).ready(function() {
                 <th class="text-center">Name</th>
                 <th class="text-center">Price</th>
                 <th class="text-center">Stock</th>
-                <th class="text-center">Category</th>
+                <th class="text-center">Photo</th>
                 <th class="text-center">Action</th>
             </thead>
           </tr>
@@ -125,7 +125,8 @@ $(document).ready(function() {
                 <td>{{ $product->name }}</td>
                 <td>{{ $product->price }}</td>
                 <td>{{ $product->stock }}</td>
-                <td>{{ $product->category }}</td>
+                <td><img src="{{URL::asset("$product->photo")}}" alt="" width="100px"></td>
+
                 <td class="text-center">
                   <form class="" id="product-{{$product->id}}" action="{{action('ProductController@destroy')}}" method="post">
                     <!--Button Edit-->

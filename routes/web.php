@@ -43,12 +43,10 @@ Route::get('supplier', function () {
     return view('supplier');
 });
 
-Route::get('category', function () {
-  return view('category');
-});
+
 
 Route::get('chainbox', function () {
-  return view('chainbox');
+  return view('chainbox.chainbox');
 });
 
 Route::get('/admin/add/supplier', function () {
@@ -80,7 +78,8 @@ Route::get('/admin/add/category', function () {
 });
 
 Route::get('/admin', 'AdminController@index');
-Route::get('/login', ['as' => 'login', 'uses'=>'AdminController@login']);
+
+
 
 Route::post('/user/login', 'UserController@login');
 
@@ -113,18 +112,9 @@ Route::group(['prefix' => 'supplier',  'middleware' => 'auth'], function(){
 Route::get('employee', 'EmployeeController@create'); //->name('employee.create');
 Route::post('employee', 'EmployeeController@store')->name('employee.store');
 
-Route::group(['prefix' => 'category',  'middleware' => 'auth'], function(){
-  Route::get('/', 'CategoryController@index');
-  Route::post('/', 'CategoryController@store');
-  Route::get('/{id}', 'CategoryController@edit');
-  Route::put('/', 'CategoryController@update');
-  Route::delete('/', 'CategoryController@destroy');
-});
 
-Route::group(['prefix' => 'chainbox',  'middleware' => 'auth'], function(){
-  Route::get('/', 'ChainboxController@index');
-  Route::post('/', 'ChainboxController@store');
-  Route::get('/{id}', 'ChainboxController@edit');
-  Route::put('/', 'ChainboxController@update');
-  Route::delete('/', 'ChainboxController@destroy');
-});
+//Chainbox
+
+Route::get('myform', 'ChainboxController@myform');
+
+Route::post('select-ajax', ['as'=>'select-ajax','uses'=>'ChainboxController@selectAjax']);

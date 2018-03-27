@@ -2,87 +2,72 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
-use App\Chainbox;
 
-class ChainboxController extends Controller
+use DB;
+
+
+class AjaxDemoController extends Controller
+
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
+
+  public function index()
+  {
       $chainboxs = Chainbox::get();
-      return view("chainbox.chainbox")->with('chainboxs', $chainboxs);
+      $countries = DB::table('countries')->pluck("name","id")->all();
+      $countries = 'test';
+
+      return view("chainbox.chainbox", compact('name', 'countries'));
+  }
+
+
+
+/**
+
+     * Show the application myform.
+
+     *
+
+     * @return \Illuminate\Http\Response
+
+     */
+
+    public function myform()
+
+    {
+
+    $countries = DB::table('countries')->pluck("name","id")->all();
+
+    return view('myform',compact('countries'));
+
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
-     * Store a newly created resource in storage.
+
+     * Show the application selectAjax.
+
      *
-     * @param  \Illuminate\Http\Request  $request
+
      * @return \Illuminate\Http\Response
+
      */
-    public function store(Request $request)
+
+    public function selectAjax(Request $request)
+
     {
-        //
+
+    if($request->ajax()){
+
+    $states = DB::table('states')->where('id_country',$request->id_country)->pluck("name","id")->all();
+
+    $data = view('ajax-select',compact('states'))->render();
+
+    return response()->json(['options'=>$data]);
+
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
 }

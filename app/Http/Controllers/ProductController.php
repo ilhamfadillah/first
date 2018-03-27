@@ -7,7 +7,7 @@ use App\Product;
 use App\Category;
 use Illuminate\Http\Request;
 use Auth;
-
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
 {
@@ -49,7 +49,39 @@ class ProductController extends Controller
        $product->name = $request->post('name');
        $product->price = $request->post('price');
        $product->stock = $request->post('stock');
-       $product->save();
+       //$imageName = time().'.'.request()->image->getClientOriginalExtension();
+        //request()->image->move(public_path('images'), $imageName);
+        //var_dump($request->hasFile('photo'));exit();
+        //$file = $request->file('photo');
+        //var_dump($file->getClientOriginalExtension()); exit();
+        //$file = $request->file('photo');
+        //$path = $file->move('public/');
+        //$path = $file->store('public/');
+/*
+        $file = File::create([
+            'title' => "testing.jpg",
+            'filename' => $path
+        ]);
+        exit;
+*/
+
+    $image = $request->file('photo');
+
+      //$name = $file->getClientOriginalName();
+
+    $destinationPath = public_path('/js');
+
+    if (!$image->move($destinationPath, $image->getClientOriginalName())) {
+      return 'Error saving the file.';
+    }
+    //var_dump($image->getClientOriginalName()); exit();
+    $product->photo = 'js/' . $image->getClientOriginalName();
+    //var_dump($product->photo = '/js/' . $image->getClientOriginalName()); exit();
+    //var_dump($product->photo = $request->post($destinationPath, $image->getClientOriginalName())); exit();
+    //exit;
+
+        //var_dump($path); exit();
+    $product->save();
         //$data = ['data1','data2','data3'];
         ///var_dump($_POST);
         return redirect('product');
@@ -72,6 +104,7 @@ class ProductController extends Controller
         $product->name = $request->name;
         $product->price = $request->price;
         $product->stock = $request->stock;
+        $product->photo = 'js/' . $image->getClientOriginalName();
         $product->save();
         return redirect('product');
     }
