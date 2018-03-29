@@ -115,4 +115,5 @@ Route::get('chainbox', 'ChainboxController@index'); //->name('employee.create');
 
 Route::get('myform', 'ChainboxController@myform');
 
-Route::post('select-state', ['as'=>'select-state','uses'=>'ChainboxController@selectAjax']);
+Route::post('select-state', ['as'=>'select-state','uses'=>'ChainboxController@selectState']);
+Route::post('select-city', ['as'=>'select-city','uses'=>'ChainboxController@selectCity']);

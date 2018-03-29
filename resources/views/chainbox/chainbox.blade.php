@@ -19,9 +19,32 @@ $(document).ready(function() {
         });
 
         $("select[name='states']").html(html);
-
       }
     });
+  });
+//--------------------------------------------------------------------------
+  $("select[name='states']").change(function(){
+    var state_id = $(this).val();
+    var token = $("input[name='_token']").val();
+    var html = "";
+    $.ajax({
+      url: "<?php echo route('select-city') ?>",
+      method: 'POST',
+      data: {state_id:state_id, _token:token},
+
+      success: function(data) {
+        $.each(data,function(city_id,city_name){
+          html +="<option value='"+city_id+"'>"+city_name+"</option>";
+        });
+
+        $("select[name='city']").html(html);
+      }
+    });
+  });
+});
+
+
+$(document).ready(function() {
 });
 </script>
 @endsection

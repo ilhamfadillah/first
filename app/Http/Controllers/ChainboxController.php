@@ -64,13 +64,20 @@ class ChainboxController extends Controller
 
      */
 
-    public function selectAjax(Request $request)
+    public function selectState(Request $request)
     {
       if($request->ajax()){
         $states = DB::table('states')->where('country_id',$request->country_id)->pluck("name","id")->all();
         return response()->json($states);
       }
+    }
 
+    public function selectCity(Request $request)
+    {
+      if($request->ajax()){
+        $city = DB::table('cities')->where('state_id',$request->state_id)->pluck("name","id")->all();
+        return response()->json($city);
+      }
     }
 
 }
