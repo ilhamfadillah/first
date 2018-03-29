@@ -16,7 +16,7 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        if (Auth::user() == false){
+        if (Auth::User() == false){
           return redirect('login');
         }
         $suppliers = Supplier::paginate(10);

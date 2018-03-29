@@ -3,22 +3,33 @@
 namespace App\Http\Controllers;
 
 
-use Illuminate\Http\Request;
-
 use DB;
+use Illuminate\Http\Request;
+use App\Country;
 
 
-class AjaxDemoController extends Controller
+
+class ChainboxController extends Controller
 
 {
 
   public function index()
   {
-      $chainboxs = Chainbox::get();
-      $countries = DB::table('countries')->pluck("name","id")->all();
-      $countries = 'test';
+      //$countries = Country::get();
+      //var_dump($chainboxs);exit();
 
-      return view("chainbox.chainbox", compact('name', 'countries'));
+      //var_dump($countries); exit;
+      //return view('user.edit_user',compact('user','id'));
+      /*
+      if (Auth::User() == false){
+        return redirect('login');
+      }
+      $countries = Country::get();
+      return view("chainbox.chainbox")->with('caountries', $countries);
+      */
+      $countries = DB::table('countries')->get();
+
+      return view("chainbox.chainbox", compact('countries'));
   }
 
 
@@ -38,7 +49,6 @@ class AjaxDemoController extends Controller
     {
 
     $countries = DB::table('countries')->pluck("name","id")->all();
-
     return view('myform',compact('countries'));
 
     }
@@ -55,18 +65,11 @@ class AjaxDemoController extends Controller
      */
 
     public function selectAjax(Request $request)
-
     {
-
-    if($request->ajax()){
-
-    $states = DB::table('states')->where('id_country',$request->id_country)->pluck("name","id")->all();
-
-    $data = view('ajax-select',compact('states'))->render();
-
-    return response()->json(['options'=>$data]);
-
-    }
+      if($request->ajax()){
+        $states = DB::table('states')->where('country_id',$request->country_id)->pluck("name","id")->all();
+        return response()->json($states);
+      }
 
     }
 

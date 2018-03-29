@@ -3,7 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-
+use Auth;
+use App\User;
 class AdminController extends Controller
 {
     /**
@@ -14,7 +15,10 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view("admin");
+        //exit();
+        $users = User::make();
+        //var_dump(Auth::user());exit();
+        return view("admin")->with('users', $users);
     }
 
     public function login()

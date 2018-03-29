@@ -23,9 +23,8 @@ Route::get('employee', function () {
     return view('createEmployee');
 });
 
-Route::get('login', function () {
-    return view('login_content');
-});
+Route::post('login', [ 'as' => 'login', 'uses' => 'UserController@login']);
+    //Route::post('/', [ 'as' => 'login', 'uses' => 'UserController@login']);
 
 Route::get('logout', function () {
     return view('login_content');
@@ -42,7 +41,6 @@ Route::get('product', function () {
 Route::get('supplier', function () {
     return view('supplier');
 });
-
 
 
 Route::get('chainbox', function () {
@@ -80,7 +78,6 @@ Route::get('/admin/add/category', function () {
 Route::get('/admin', 'AdminController@index');
 
 
-
 Route::post('/user/login', 'UserController@login');
 
 Route::group(['prefix' => 'user',  'middleware' => 'auth'], function(){
@@ -111,10 +108,11 @@ Route::group(['prefix' => 'supplier',  'middleware' => 'auth'], function(){
 
 Route::get('employee', 'EmployeeController@create'); //->name('employee.create');
 Route::post('employee', 'EmployeeController@store')->name('employee.store');
-
+Route::get('login', 'UserController@login');
 
 //Chainbox
+Route::get('chainbox', 'ChainboxController@index'); //->name('employee.create');
 
 Route::get('myform', 'ChainboxController@myform');
 
-Route::post('select-ajax', ['as'=>'select-ajax','uses'=>'ChainboxController@selectAjax']);
+Route::post('select-state', ['as'=>'select-state','uses'=>'ChainboxController@selectAjax']);

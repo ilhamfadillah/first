@@ -11,7 +11,7 @@
 
     <!-- {{url('user/login')}} -->
 
-    <form action="{{url('user/login')}}" method="post">
+    <form action="{{url('login')}}" method="post">
       {{csrf_field()}}
 
       <div class="form-group has-feedback">

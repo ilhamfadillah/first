@@ -16,7 +16,7 @@ class LayoutController extends Controller
     public function index()
     {
         $users = User::get();
-        return view("latihan.index")->with('users', $users);;
+        return view("latihan.index")->with('users', $users);
     }
 
     public function kedua()
@@ -24,5 +24,5 @@ class LayoutController extends Controller
         return view("latihan.kedua");
     }
 
-    
+
 }

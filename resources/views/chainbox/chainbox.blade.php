@@ -1,73 +1,66 @@
 @extends('layouts.default')
 
+@section('js')
+<script type="text/javascript">
+$(document).ready(function() {
+  $("select[name='country']").change(function(){
+    var country_id = $(this).val();
+    var token = $("input[name='_token']").val();
+    var html = "";
+
+    $.ajax({
+      url: "<?php echo route('select-state') ?>",
+      method: 'POST',
+      data: {country_id:country_id, _token:token},
+
+      success: function(data) {
+        $.each(data,function(state_id,state_name){
+           html +="<option value='"+state_id+"'>"+state_name+"</option>";
+        });
+
+        $("select[name='states']").html(html);
+
+      }
+    });
+});
+</script>
+@endsection
+
 @section('title', 'Supplier')
 
 @section('content')
+<div class="content row">
+  <div class="col-lg-5">
 
-{{ Form::open() }}
-
+  {{ Form::open() }}
 
   <div class="form-group">
-    <?php var_dump($countries); exit;?>
-    <label>Select Country:</label>
-
-    {{ Form::select('id_country',[
-    '' => '--- Select Country ---'
-    ],$countries,null,['class'=>'form-control']) }}
-
+    <label>Select Country :</label>
+    <select class="form-control" name="country">
+      <option value="">--- Select Country ---</option>
+      @foreach($countries as $country)
+      <option value="{{$country->id}}">{{ $country->name }}</option>
+      @endforeach
+    </select>
   </div>
 
-
   <div class="form-group">
-
-    <label>Select State:</label>
-
-    {!! Form::select('id_state',[''=>'--- Select State ---'],null,['class'=>'form-control']) !!}
-
+    <label>Select State :</label>
+    {!! Form::select('states',[''=>'--- Select State ---'],null,['class'=>'form-control']) !!}
   </div>
 
+  <div class="form-group">
+    <label>Select City :</label>
+    {!! Form::select('city',[''=>'--- Select City ---'],null,['class'=>'form-control']) !!}
+  </div>
 
   <div class="form-group">
-
     <button class="btn btn-success" type="submit">Submit</button>
-
   </div>
 
+  {!! Form::close() !!}
 
-{!! Form::close() !!}
-
-
+  </div>
 </div>
-
-
-<script type="text/javascript">
-
-$("select[name='id_country']").change(function(){
-
-    var id_country = $(this).val();
-
-    var token = $("input[name='_token']").val();
-
-    $.ajax({
-
-        url: "<?php echo route('select-ajax') ?>",
-
-        method: 'POST',
-
-        data: {id_country:id_country, _token:token},
-
-        success: function(data) {
-
-          $("select[name='id_state'").html('');
-
-          $("select[name='id_state'").html(data.options);
-
-        }
-
-    });
-
-});
-
-</script>
 
 @endsection

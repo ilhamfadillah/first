@@ -33,7 +33,7 @@ class ProductController extends Controller
 
 
         if($user->role == 'user'){
-          return redirect('admin');
+          return redirect('login');
         }
 
 

@@ -19,8 +19,8 @@ class UserController extends Controller
     {
 
       if (Auth::user() == false){
-        //var_dump(Auth::user()); exit();
-        return redirect('login');
+        //var_dump(Auth::user());
+        return redirect('login.login_content');
       }
 
 
@@ -31,7 +31,7 @@ class UserController extends Controller
     public function login(Request $request)
     {
 
-      //var_dump(request('username')); exit();
+      //var_dump($request->all()); exit();
       //$this->middleware('guest')->except('logout');
       //$login = Auth::attempt(['username' => 'PoloVista', 'password' => 'secret']);
 
@@ -45,10 +45,9 @@ class UserController extends Controller
       $role = $request->post('role');
 
 
+      //var_dump($username); exit();
       //validator = Validator::make(Input::all(), $users);
       $login = Auth::attempt(['username' => $username, 'password' => $password]);
-      //var_dump($login); exit();
-
       if($login){
           //var_dump(Auth::user()); exit();
           //exit('berhasil');
@@ -58,6 +57,7 @@ class UserController extends Controller
           //var_dump($request->all()); exit();
           exit('gagal');
         }
+
     }
 
     public function logout()
