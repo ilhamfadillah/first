@@ -79,10 +79,10 @@ Route::get('/admin', 'AdminController@index');
 
 
 Route::post('/user/login', 'UserController@login');
+Route::get('/logout', 'UserController@logout');
 
 Route::group(['prefix' => 'user',  'middleware' => 'auth'], function(){
   //Route::post('/login', 'UserController@login');
-  Route::get('/logout', 'UserController@logout');
   Route::get('/', 'UserController@index');
   Route::post('/', 'UserController@store');
   Route::get('/{id}', 'UserController@edit');
@@ -117,3 +117,12 @@ Route::get('myform', 'ChainboxController@myform');
 
 Route::post('select-state', ['as'=>'select-state','uses'=>'ChainboxController@selectState']);
 Route::post('select-city', ['as'=>'select-city','uses'=>'ChainboxController@selectCity']);
+//--------------------------------------------------------------------------
+
+Route::get('category', function() {
+  return view('category.category');
+});
+
+Route::get('category/add', function() {
+  return view('category.category_add');
+});

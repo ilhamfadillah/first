@@ -10,12 +10,6 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 
 {
-
-    public function category()
-    {
-      return $this->belongsTo('App\Category');
-    }
-
     /**
 
      * The attributes that are mass assignable.
@@ -28,8 +22,12 @@ class Product extends Model
 
     protected $fillable = [
 
-        'name', 'price', 'stock', 'photo'
+        'name', 'price', 'stock', 'photo', 'category_id'
 
     ];
 
+    public function category()
+    {
+      return $this->belongsTo('App\Category');
+    }
 }

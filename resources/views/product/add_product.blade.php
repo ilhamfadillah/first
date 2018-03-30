@@ -61,6 +61,12 @@ $(function() {
               <input type="text" data-validation="number" name="stock" class="form-control" placeholder="0" onkeypress="return just_num(event)">
             </div>
 
+            <div class="form-group">
+              <label for="category">category</label>
+              <select class="form-control" name="category">
+                <option value="">-- Select Category --</option>
+              </select>
+            </div>
 
             <div class="form-group">
                 <label for="photo">Photo</label>

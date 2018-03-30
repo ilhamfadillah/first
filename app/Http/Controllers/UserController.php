@@ -55,7 +55,7 @@ class UserController extends Controller
           return view('admin');
         }else{
           //var_dump($request->all()); exit();
-          exit('gagal');
+          return view('login.login_content');
         }
 
     }

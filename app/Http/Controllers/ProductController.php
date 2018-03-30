@@ -22,11 +22,11 @@ class ProductController extends Controller
     {
         //var_dump(Auth::user());exit();
         /*
+        */
         if (Auth::user() == false){
           return redirect('login');
           //exit('bukan user');
         }
-        */
 
         $user = Auth::user();
         //var_dump($user->role); exit();

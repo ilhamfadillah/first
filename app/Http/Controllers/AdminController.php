@@ -15,6 +15,11 @@ class AdminController extends Controller
      */
     public function index()
     {
+
+      if (Auth::user() == false){
+        return redirect('login');
+        //exit('bukan user');
+      }
         //exit();
         $users = User::make();
         //var_dump(Auth::user());exit();
