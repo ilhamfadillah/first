@@ -9,7 +9,7 @@
 <section class="content">
 	<div class="row">
 		<div class="col-xs-12">
-			<a href="{{ url('category/add') }}" class="btn btn-primary">	<span class="glyphicon glyphicon-plus">ADD
+			<a href="{{ url('/admin/add/category') }}" class="btn btn-primary">	<span class="glyphicon glyphicon-plus">ADD
         </span>
 			</a>
 		</div>
@@ -26,26 +26,26 @@
 							<tr>
 								<th class="text-center">Id</th>
 								<th class="text-center">Category</th>
-								<th class="text-center">Count</th>
 								<th class="text-center" colspan="2">Action</th>
 							</tr>
 						</thead>
 						<tbody>
+              @foreach($categories as $category)
 							<tr>
-								<td>1</td>
-								<td>Food</td>
-								<td>12</td>
+								<td>{{ $category->id }}</td>
+								<td>{{ $category->category }}</td>
 								<td class="text-center">
                   <a href="" class="btn btn-primary">Edit</a>
 								</td>
 								<td class="text-center">
-									<form id="" action="" method="post">
+									<form id="" action="" method="post">{{csrf_field()}}
                     <button type="submit" class="btn btn-danger delete" supplier_id="">Delete</button>
 										<input type="hidden" name="id" value="">
 										<input type="hidden" name="_method" value="delete">
 									</form>
 								</td>
 							</tr>
+              @endforeach
 						</tbody>
 					</table>
 				</div>

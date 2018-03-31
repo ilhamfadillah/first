@@ -63,17 +63,14 @@ Route::get('/admin/edit/user', function () {
     return view('user/edit_user');
 });
 
-Route::get('/admin/add/product', function () {
-    return view('product/add_product');
-});
-
 Route::get('/admin/edit/product', function () {
     return view('product/edit_product');
 });
 
 Route::get('/admin/add/category', function () {
-    return view('category/add_category');
+    return view('category/category_add');
 });
+
 
 Route::get('/admin', 'AdminController@index');
 
@@ -97,6 +94,8 @@ Route::group(['prefix' => 'product',  'middleware' => 'auth'], function(){
   Route::put('/', 'ProductController@update');
   Route::delete('/', 'ProductController@destroy');
 });
+Route::get('product/{id}', 'ProductController@edit');
+Route::get('/admin/add/product', 'ProductController@add_product');
 
 Route::group(['prefix' => 'supplier',  'middleware' => 'auth'], function(){
   Route::get('/', 'SupplierController@index');
@@ -119,10 +118,9 @@ Route::post('select-state', ['as'=>'select-state','uses'=>'ChainboxController@se
 Route::post('select-city', ['as'=>'select-city','uses'=>'ChainboxController@selectCity']);
 //--------------------------------------------------------------------------
 
-Route::get('category', function() {
-  return view('category.category');
+Route::group(['prefix' => 'category',  'middleware' => 'auth'], function(){
+  Route::get('/', 'CategoryController@index');
+  Route::post('/', 'CategoryController@store');
 });
 
-Route::get('category/add', function() {
-  return view('category.category_add');
-});
+Route::post('select-category', ['as'=>'select-category','uses'=>'CategoryController@selectCategory']);

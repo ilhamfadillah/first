@@ -9,7 +9,7 @@ function just_num(evt){
     return false;
   return true;
 }
-
+//--------------------------------------------------------------------------
 $(function() {
     // Multiple images preview in browser
     var imagesPreview = function(input, placeToInsertImagePreview) {
@@ -34,6 +34,8 @@ $(function() {
         imagesPreview(this, 'div.gallery');
     });
 });
+//--------------------------------------------------------------------------
+
 </script>
 @endsection
 @section('content')
@@ -62,12 +64,15 @@ $(function() {
             </div>
 
             <div class="form-group">
-              <label for="category">category</label>
+              <label>Select Category :</label>
               <select class="form-control" name="category">
-                <option value="">-- Select Category --</option>
+                <option value="">--- Select Category ---</option>
+                @foreach($categories as $category)
+                <option value="{{$category->id}}">{{ $category->category }}</option>
+                @endforeach
               </select>
             </div>
-
+            
             <div class="form-group">
                 <label for="photo">Photo</label>
                 <input type="file" name="photo" id="imgInp" multiple>

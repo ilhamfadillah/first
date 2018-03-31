@@ -10,10 +10,10 @@
 					<div class="panel panel-primary">
 						<div class="panel-heading">Add Category</div>
 						<div class="panel-body">
-							<form method="post" action="{{ route('employee.store') }}">{{csrf_field()}}
+							<form method="post" action="{{ action('CategoryController@store') }}">{{csrf_field()}}
 								<div class="form-group">
 									<label class="col-md-4">Name</label>
-									<input type="text" class="form-control" name="employee_name" />
+									<input type="text" class="form-control" name="category" />
 								</div>
 								<div class="form-group">
 									<button type="submit" class="btn btn-primary">Add</button>

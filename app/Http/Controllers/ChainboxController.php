@@ -15,20 +15,8 @@ class ChainboxController extends Controller
 
   public function index()
   {
-      //$countries = Country::get();
-      //var_dump($chainboxs);exit();
 
-      //var_dump($countries); exit;
-      //return view('user.edit_user',compact('user','id'));
-      /*
-      if (Auth::User() == false){
-        return redirect('login');
-      }
-      $countries = Country::get();
-      return view("chainbox.chainbox")->with('caountries', $countries);
-      */
       $countries = DB::table('countries')->get();
-
       return view("chainbox.chainbox", compact('countries'));
   }
 
