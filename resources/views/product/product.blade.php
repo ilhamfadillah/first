@@ -28,7 +28,7 @@ $(document).ready(function() {
       //e.preventDefault();
 
       });
-    });
+  });
   //});
 
 </script>
@@ -130,13 +130,13 @@ $(document).ready(function() {
                 <td>{{ $product->category->category }}</td>
 
                 <td class="text-center">
-                  <form class="" id="product-{{$product->id}}" action="{{action('ProductController@destroy')}}" method="post">
                     <!--Button Edit-->
                     <a href="{{ action('ProductController@edit', ['id' => $product->id]) }}" name="button" class="btn btn-info">
                       <span class="glyphicon glyphicon-pencil">Edit</span>
                     </a>
 
                     <!--Button Remove-->
+                    <form class="" id="product-{{$product->id}}" action="{{action('ProductController@destroy')}}" method="post">
                     <button type="submit" class="glyphicon glyphicon-remove btn btn-danger delete" product_id="{{$product->id}}" data-toggle="confirmation" data-placement="bottom">Delete</button>
                     {{csrf_field()}}
                     <input type="hidden" name="id" value="{{$product->id}}">
@@ -154,9 +154,8 @@ $(document).ready(function() {
       </div>
       <!-- /.box -->
     </div>
-
+    <div id="dialog" title="Empty the recycle bin?" style="display: none;">
+      <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
+    </div>
   </section>
-  <div id="dialog" title="Empty the recycle bin?">
-    <p><span class="ui-icon ui-icon-alert" style="float:left; margin:12px 12px 20px 0;"></span>These items will be permanently deleted and cannot be recovered. Are you sure?</p>
-  </div>
 @endsection

@@ -29,12 +29,7 @@ class ProductController extends Controller
         if($user->role == 'user'){
           return redirect('login');
         }
-        /*
-        $categories = DB::table('categories')->with('categories', $categories);
-        $products = Product::paginate(10);
-        return view("product.product")->with('products', $products);
-        */
-        //$categories = DB::table('categories')->get();
+
         $categories = Category::all();
         $products = Product::paginate(10);
         return view("product.product", compact('categories', 'products'));
@@ -50,12 +45,6 @@ class ProductController extends Controller
       if($user->role == 'user'){
         return redirect('login');
       }
-      /*
-      $categories = DB::table('categories')->with('categories', $categories);
-      $products = Product::paginate(10);
-      return view("product.product")->with('products', $products);
-      */
-      //$categories = DB::table('categories')->get();
       $categories = Category::all();
       $products = Product::paginate(10);
       return view("product.add_product", compact('categories', 'products'));
@@ -79,7 +68,7 @@ class ProductController extends Controller
             return redirect('product');
     }
 
-    public function edit($id)//for show data into form edit
+    public function edit($id)
     {
         $product = Product::find($id);
         $categories = Category::all();
@@ -88,9 +77,9 @@ class ProductController extends Controller
 
     public function update(Request $request)
     {
+
+      File::delete(base_path('public/'+ $product->photo));
         $image = $request->file('photo');
-
-
         $product = Product::find($request->id);
         $product->photo = 'js/'.$image->getClientOriginalName();
         $product->name = $request->name;
@@ -104,17 +93,11 @@ class ProductController extends Controller
     public function destroy(Request $request)
 
     {
+      $product = Product::find($request->id);
       $image = $request->file('photo');
-      File::delete(base_path('public/'+{{$product->photo}}));
-      //echo base_path('public/js/milo.jpeg');
-      //var_dump(File::delete(base_path('public/js/milo.jpeg')));
-
-        //$image = $request->file('photo');
-        $product = Product::find($request->id);
-        $product->delete();
-
-
-        return redirect('product');
-
+      File::delete(public_path($product->photo));
+      $product = Product::find($request->id);
+      $product->delete();
+      return redirect('product');
     }
 }
