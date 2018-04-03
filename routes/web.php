@@ -142,3 +142,10 @@ Route::post('select-state', ['as'=>'select-state','uses'=>'ChainboxController@se
 Route::post('select-city', ['as'=>'select-city','uses'=>'ChainboxController@selectCity']);
 
 //---------------------------------------------------------------------------
+//================MOMENT============================
+
+Route::get('moment', function () {
+  return view('moment.moment_page');
+});
+
+//--------------------------------------------------------------------------

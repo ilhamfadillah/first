@@ -105,6 +105,9 @@
 <!-- AdminLTE for demo purposes -->
 <script src="{{ URL::asset('/dist/js/demo.js') }}"></script>
 
+<script src="{{ URL::asset('/js/moment.min.js') }}" charset="utf-8"></script>
+<script src="{{ URL::asset('/js/moment-with-locales.js') }}" charset="utf-8"></script>
+@yield('moment')
 <script src="{{ URL::asset('//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js') }}"></script>
 <script>
   $.validate({
