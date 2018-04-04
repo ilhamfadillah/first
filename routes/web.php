@@ -142,10 +142,9 @@ Route::post('select-state', ['as'=>'select-state','uses'=>'ChainboxController@se
 Route::post('select-city', ['as'=>'select-city','uses'=>'ChainboxController@selectCity']);
 
 //---------------------------------------------------------------------------
-//================MOMENT============================
+//==================FACEBOOK LOGIN==============================
 
-Route::get('moment', function () {
-  return view('moment.moment_page');
-});
+Route::get('/redirect', 'SocialAuthFacebookController@redirect');
+Route::get('/callback', 'SocialAuthFacebookController@callback');
 
 //--------------------------------------------------------------------------

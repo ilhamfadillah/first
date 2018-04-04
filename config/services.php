@@ -35,4 +35,9 @@ return [
         'secret' => env('STRIPE_SECRET'),
     ],
 
+    'facebook' => [
+        'client_id' => '918903744954497',
+        'client_secret' => 'e72af746c84d02570a262e932cae054b',
+        'redirect' => 'http://safe-woodland-77424.herokuapp.com/callback',
+    ],
 ];
