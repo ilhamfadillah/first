@@ -12,7 +12,7 @@ class SocialFacebookAccountService
         $account = SocialFacebookAccount::whereProvider('facebook')
             ->whereProviderUserId($providerUser->getId())
             ->first();
-
+            var_dump($account); exit();
         if ($account) {
             return $account->user;
         } else {
