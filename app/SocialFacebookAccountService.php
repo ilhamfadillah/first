@@ -9,6 +9,7 @@ class SocialFacebookAccountService
 {
     public function createOrGetUser(ProviderUser $providerUser)
     {
+        var_dump(SocialFacebookAccount::get()); exit();
         
         $account = SocialFacebookAccount::where('provider','facebook')
             //->where('provider_user_id',$providerUser->getId())
