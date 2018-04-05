@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UpdateRoleInUsersForUsersTable extends Migration
+class UpdateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class UpdateRoleInUsersForUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('role')->default('admin');
+        Schema::table('users', function ($table) {
+            $table->string('role')->default('admin')->change();
         });
+
     }
 
     /**
@@ -25,8 +26,8 @@ class UpdateRoleInUsersForUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('role')->change();
+        Schema::table('users', function ($table) {
+            $table->string('role')->default('admin')->change();
         });
     }
 }
