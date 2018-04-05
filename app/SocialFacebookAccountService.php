@@ -11,7 +11,7 @@ class SocialFacebookAccountService
     {
         
         $account = SocialFacebookAccount::where('provider','facebook')
-            ->where('provider_user_id',$providerUser->getId())
+            //->where('provider_user_id',$providerUser->getId())
             ->first();
             var_dump($account); exit();
         if ($account) {
