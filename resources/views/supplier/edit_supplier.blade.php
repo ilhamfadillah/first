@@ -34,16 +34,31 @@
               <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" data-validation="length alphanumeric" data-validation-length="min4" class="form-control" name="name" placeholder="Name Supplier" value="{{ $supplier->name }}">
+                @if ($errors->has('name'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('name') }}</strong>
+                    </span>
+                @endif
               </div>
 
               <div class="form-group">
                 <label for="address">Address</label >
                 <textarea name="address" data-validation="length alphanumeric" data-validation-length="min4" class="form-control" rows="4" cols="80" placeholder="Address">{{$supplier->address}}</textarea>
+                @if ($errors->has('address'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('address') }}</strong>
+                    </span>
+                @endif
               </div>
 
               <div class="form-group">
                 <label for="phone">Phone</label>
                 <input type="text" data-validation="number" data-validation-length="min5" class="form-control" name="phone" placeholder="Phone Number" value="{{ $supplier->phone }}" onkeypress="return just_num(event)">
+                @if ($errors->has('phone'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('phone') }}</strong>
+                    </span>
+                @endif
               </div>
 
               <input type="submit" name="" value="Update" class="btn btn-primary">

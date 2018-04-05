@@ -10,6 +10,8 @@ use Auth;
 use Illuminate\Support\Facades\File;
 use DB;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\StoreProduct;
+use App\Http\Requests\UpdateProduct;
 class ProductController extends Controller
 {
     /**
@@ -50,7 +52,7 @@ class ProductController extends Controller
       return view("product.add_product", compact('categories', 'products'));
     }
 
-    public function store(Request $request)
+    public function store(StoreProduct $request)
     {
        $product = new Product;
        $product->name = $request->post('name');
@@ -59,11 +61,11 @@ class ProductController extends Controller
        $product->category_id = $request->post('category');
        $product->category_name = $request->post('category');
        $image = $request->file('photo');
-       $destinationPath = public_path('/js');
+       $destinationPath = base_path('/public');
        if (!$image->move($destinationPath, $image->getClientOriginalName())) {
          return 'Error saving the file.';
        }
-       $product->photo = 'js/' . $image->getClientOriginalName();
+       $product->photo = $image->getClientOriginalName();
        $product->save();
             return redirect('product');
     }
@@ -75,17 +77,20 @@ class ProductController extends Controller
         return view('product.edit_product',compact('product','id', 'categories'));
     }
 
-    public function update(Request $request)
+    public function update(UpdateProduct $request)
     {
-
-      File::delete(base_path('public/'+ $product->photo));
-        $image = $request->file('photo');
         $product = Product::find($request->id);
-        $product->photo = 'js/'.$image->getClientOriginalName();
+        File::delete(base_path('public/'.$product->photo));
         $product->name = $request->name;
         $product->price = $request->price;
         $product->stock = $request->stock;
         $product->category_id = $request->category;
+        $image = $request->file('photo');
+        $destinationPath = base_path('/public');
+        if (!$image->move($destinationPath, $image->getClientOriginalName())) {
+         return 'Error saving the file.';
+        }
+        $product->photo = $image->getClientOriginalName();
         $product->save();
         return redirect('product');
     }

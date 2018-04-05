@@ -6,6 +6,8 @@ use Auth;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreUser;
+use App\Http\Requests\UpdateUser;
 
 class UserController extends Controller
 {
@@ -64,10 +66,10 @@ class UserController extends Controller
     {
       Auth::logout();
       //exit();
-      return view('login.login_content');
+      return redirect('/login');
     }
 
-    public function store(Request $request)
+    public function store(StoreUser $request)
     {
         //var_dump($request->all()); exit();
         $users = new User;
@@ -90,7 +92,7 @@ class UserController extends Controller
         return view('user.edit_user',compact('user','id'));
     }
 
-    public function update(Request $request)
+    public function update(UpdateUser $request)
     {
         //var_dump($request->all());exit();
         $user = User::find($request->id);

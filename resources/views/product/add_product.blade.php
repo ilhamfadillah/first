@@ -10,7 +10,7 @@ function just_num(evt){
   return true;
 }
 //--------------------------------------------------------------------------
-//Mulri Input File
+//Multi Input File
 $(function() {
     // Multiple images preview in browser
     var imagesPreview = function(input, placeToInsertImagePreview) {
@@ -52,16 +52,31 @@ $(function() {
             <div class="form-group">
               <label for="product_name">Name</label>
               <input type="text" data-validation-length="min4" name="name" class="form-control" placeholder="Enter Produk">
+              @if ($errors->has('name'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('name') }}</strong>
+                    </span>
+                @endif
             </div>
 
             <div class="form-group">
               <label for="product_price">Price</label>
               <input type="text" data-validation="number" name="price" class="form-control" placeholder="0" onkeypress="return just_num(event)">
+              @if ($errors->has('price'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('price') }}</strong>
+                    </span>
+                @endif
             </div>
 
             <div class="form-group">
               <label for="product_stock">Stock</label>
               <input type="text" data-validation="number" name="stock" class="form-control" placeholder="0" onkeypress="return just_num(event)">
+              @if ($errors->has('stock'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('stock') }}</strong>
+                    </span>
+                @endif
             </div>
 
             <div class="form-group">
@@ -78,6 +93,11 @@ $(function() {
             <div class="form-group">
                 <label for="photo">Photo</label>
                 <input type="file" name="photo" id="imgInp" multiple>
+                @if ($errors->has('photo'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('photo') }}</strong>
+                    </span>
+                @endif
             </div>
 
             <!-- show file -->
@@ -86,33 +106,6 @@ $(function() {
                 <div class="gallery"></div>
               </div>
             </div>
-
-            <!-- slider image -->
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
-            <!-- Indicators -->
-            <ol class="carousel-indicators">
-              <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-              <li data-target="#myCarousel" data-slide-to="1"></li>
-              <li data-target="#myCarousel" data-slide-to="2"></li>
-            </ol>
-
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner">
-              <div class="item active">
-
-              </div>
-            </div>
-
-            <!-- Left and right controls -->
-            <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-              <span class="glyphicon glyphicon-chevron-left"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="right carousel-control" href="#myCarousel" data-slide="next">
-              <span class="glyphicon glyphicon-chevron-right"></span>
-              <span class="sr-only">Next</span>
-            </a>
-          </div>
 
             <button type="submit" class="btn btn-primary">Submit</button>
 

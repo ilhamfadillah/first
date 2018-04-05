@@ -9,6 +9,8 @@ use Auth;
 use App\User;
 use App\Category;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreCategory;
+use App\Http\Requests\UpdateCategory;
 
 class CategoryController extends Controller
 {
@@ -49,8 +51,9 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreCategory $request)
     {
+      //var_dump($request->all());exit();
       //var_dump($request->all());exit();
       $category = new Category;
       $category->category = $request->post('category');
@@ -79,7 +82,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $category = Category::find($id);
+        return view('category.category_edit',compact('category'));
     }
 
     /**
@@ -89,9 +93,14 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateCategory $request)
     {
-        //
+        //var_dump($request->id); exit();
+        $category = Category::find($request->id);
+        $category->category = $request->category;
+        
+        $category->save();
+        return redirect('category');
     }
 
     /**
@@ -100,9 +109,15 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        //var_dump($request->all()); exit();
+        $category = Category::find($request->id);
+        $category->delete();
+
+
+        return redirect('category');
+
     }
 //--------------------------------------------------------------------------
 }

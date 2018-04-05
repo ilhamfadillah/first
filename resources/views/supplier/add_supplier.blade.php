@@ -50,6 +50,11 @@ function initMap() {
               <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" data-validation-length="min1" class="form-control" name="name" placeholder="Name">
+                @if ($errors->has('name'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('name') }}</strong>
+                    </span>
+                @endif
                 <span class="val"></span>
               </div>
 
@@ -57,12 +62,22 @@ function initMap() {
                 <label for="address">Address</label >
                 <textarea name="address" data-validation-length="min4" class="form-control" rows="4" cols="80" placeholder="Address"></textarea>
                 <span class="val"></span>
+                @if ($errors->has('address'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('address') }}</strong>
+                    </span>
+                @endif
               </div>
 
               <div class="form-group">
                 <label for="phone">Phone</label>
                 <input type="text" data-validation="number" data-validation-length="min5" class="form-control" name="phone" placeholder="Phone Number" onkeypress="return just_num(event)">
                 <span class="val"></span>
+                @if ($errors->has('phone'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('phone') }}</strong>
+                    </span>
+                @endif
               </div>
 
               <input type="submit" name="" value="ADD" class="btn btn-primary">

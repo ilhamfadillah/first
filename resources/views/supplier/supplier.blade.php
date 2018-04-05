@@ -78,7 +78,7 @@ $(document).ready(function() {
 
                       <form id="supplier-{{$supplier->id}}" action="{{action('SupplierController@destroy')}}" method="post">
 
-                        <a href="{{ action('SupplierController@edit', ['id' => $supplier->id]) }}" class="btn btn-primary">Edit</a>
+                          <a href="{{ action('SupplierController@edit', ['id' => $supplier->id]) }}" class="btn btn-primary">Edit</a>
 
                         <button type="submit" class="btn btn-danger delete" supplier_id="{{$supplier->id}}">Delete</button>
                         {{csrf_field()}}

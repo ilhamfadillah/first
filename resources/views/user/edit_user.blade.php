@@ -28,18 +28,38 @@
             <div class="form-group">
               <label for="username">Username</label>
               <input type="text" data-validation="length alphanumeric" data-validation-length="min4" name="username" class="form-control" placeholder="Enter Username" value="{{ $user->username }}">
+              @if ($errors->has('username'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('username') }}</strong>
+                    </span>
+                @endif
             </div>
             <div class="form-group">
               <label for="password">Password</label>
               <input type="text" data-validation-length="min6" name="password" class="form-control" placeholder="Enter password" value="{{ $user->password }}">
+              @if ($errors->has('password'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
+                @endif
             </div>
             <div class="form-group">
               <label for="email">E-mail</label>
               <input type="text" data-validation="email" name="email" class="form-control" placeholder="Enter Email" value="{{ $user->email }}">
+              @if ($errors->has('email'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('email') }}</strong>
+                    </span>
+                @endif
             </div>
             <div class="form-group">
               <label for="phone">Phone Number</label>
               <input type="text" data-validation="number" name="phone_number" class="form-control" placeholder="Phone Number" value="{{ $user->phone_number }}" onkeypress="return just_num(event)">
+              @if ($errors->has('phone_number'))
+                    <span class="invalid-feedback">
+                        <strong>{{ $errors->first('phone_number') }}</strong>
+                    </span>
+                @endif
             </div>
             <div class="form-group">
               <label for="role">Role</label>

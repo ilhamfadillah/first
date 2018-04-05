@@ -115,6 +115,9 @@ Route::get('/admin/add/category', function () {
 Route::group(['prefix' => 'category',  'middleware' => 'auth'], function(){
   Route::get('/', 'CategoryController@index');
   Route::post('/', 'CategoryController@store');
+  Route::get('/{id}', 'CategoryController@edit');
+  Route::put('/', 'CategoryController@update');
+  Route::delete('/', 'CategoryController@destroy');
 });
 
 Route::post('select-category', ['as'=>'select-category','uses'=>'CategoryController@selectCategory']);
@@ -149,4 +152,4 @@ Route::get('/callback', 'SocialAuthFacebookController@callback');
 
 //--------------------------------------------------------------------------
 
-Auth::routes();
+//Auth::routes();

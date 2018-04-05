@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Supplier;
 use App\Http\Controllers\Controller;
 use Auth;
+use App\Http\Requests\StoreSupplier;
+use App\Http\Requests\UpdateSupplier;
 
 class SupplierController extends Controller
 {
@@ -39,7 +41,7 @@ class SupplierController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreSupplier $request)
     {
         //var_dump($request->all());exit();
         $supplier = new Supplier;
@@ -85,7 +87,7 @@ class SupplierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(UpdateSupplier $request)
     {
         //
         //var_dump($request->all());exit();
