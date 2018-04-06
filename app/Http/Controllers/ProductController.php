@@ -29,7 +29,7 @@ class ProductController extends Controller
 
         $user = Auth::user();
         if($user->role == 'user'){
-          return redirect('login');
+          return redirect('admin');
         }
 
         $categories = Category::all();

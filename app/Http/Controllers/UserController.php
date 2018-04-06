@@ -74,7 +74,7 @@ class UserController extends Controller
         //var_dump($request->all()); exit();
         $users = new User;
         $users->username = $request->post('username');
-        $users->password = $request->post('password');
+        $users->password = bcrypt($request->post('password'));
         $users->email = $request->post('email');
         $users->phone_number = $request->post('phone_number');
         $users->role = $request->post('role');
