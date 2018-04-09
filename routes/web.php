@@ -153,13 +153,15 @@ Route::get('/callback', 'SocialAuthFacebookController@callback');
 //--------------------------------------------------------------------------
 //===================PAYPAL=================
 
-Route::group(['prefix' => 'paypal',  'middleware' => 'auth'], function(){
-    //payment form
-    Route::get('/', 'PaymentController@index');
-    // route for processing payment
-    Route::post('/', 'PaymentController@payWithpaypal');
-    // route for check status of the payment
-    Route::get('/', 'PaymentController@getPaymentStatus');
-    //---------------------------------------------------------------------------
+Route::get('paypal', function () {
+  return view('paypal.index');
 });
+
+    //payment form
+Route::get('/', 'PaymentController@index');
+// route for processing payment
+Route::post('paypal', 'PaymentController@payWithpaypal');
+// route for check status of the payment
+Route::get('status', 'PaymentController@getPaymentStatus');
+    //---------------------------------------------------------------------------
 //Auth::routes();
