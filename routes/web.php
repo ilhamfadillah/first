@@ -151,5 +151,15 @@ Route::get('/redirect', 'SocialAuthFacebookController@redirect');
 Route::get('/callback', 'SocialAuthFacebookController@callback');
 
 //--------------------------------------------------------------------------
+//===================PAYPAL=================
 
+Route::group(['prefix' => 'paypal',  'middleware' => 'auth'], function(){
+    //payment form
+    Route::get('/', 'PaymentController@index');
+    // route for processing payment
+    Route::post('/', 'PaymentController@payWithpaypal');
+    // route for check status of the payment
+    Route::get('/', 'PaymentController@getPaymentStatus');
+    //---------------------------------------------------------------------------
+});
 //Auth::routes();

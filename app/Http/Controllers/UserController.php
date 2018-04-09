@@ -115,5 +115,6 @@ class UserController extends Controller
 
         return redirect('user');
 
-    }
+    }   
+        
 }

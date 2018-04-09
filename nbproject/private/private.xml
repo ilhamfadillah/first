@@ -3,56 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/var/www/html/first/resources/views/layouts/header.blade.php</file>
-            <file>file:/var/www/html/first/resources/views/category/category.blade.php</file>
-            <file>file:/var/www/html/first/resources/views/user/add_user.blade.php</file>
-            <file>file:/var/www/html/first/app/Http/Controllers/AdminController.php</file>
-            <file>file:/var/www/html/first/resources/views/category/category_edit.blade.php</file>
-            <file>file:/var/www/html/first/app/SocialFacebookAccountService.php</file>
-            <file>file:/var/www/html/first/database/seeds/UsersTableSeeder.php</file>
-            <file>file:/var/www/html/first/config/services.php</file>
-            <file>file:/var/www/html/first/app/Http/Requests/UpdateUser.php</file>
-            <file>file:/var/www/html/first/app/Http/Controllers/UserController.php</file>
-            <file>file:/var/www/html/first/app/Http/Controllers/SupplierController.php</file>
-            <file>file:/var/www/html/first/config/app.php</file>
-            <file>file:/var/www/html/first/config/database.php</file>
-            <file>file:/var/www/html/first/resources/views/product/product.blade.php</file>
-            <file>file:/var/www/html/first/resources/views/supplier/edit_supplier.blade.php</file>
-            <file>file:/var/www/html/first/database/migrations/2018_04_05_083604_update_users2_table.php</file>
-            <file>file:/var/www/html/first/database/migrations/2018_03_09_143902_create_users_table.php</file>
-            <file>file:/var/www/html/first/resources/views/admin.blade.php</file>
-            <file>file:/var/www/html/first/app/Http/Controllers/Auth/LoginController.php</file>
-            <file>file:/var/www/html/first/resources/views/login/login.blade.php</file>
-            <file>file:/var/www/html/first/app/Http/Requests/StoreCategory.php</file>
-            <file>file:/var/www/html/first/resources/views/auth/nologin.blade.php</file>
-            <file>file:/var/www/html/first/app/Http/Requests/StoreUser.php</file>
-            <file>file:/var/www/html/first/config/auth.php</file>
             <file>file:/var/www/html/first/app/Http/Controllers/SocialAuthFacebookController.php</file>
-            <file>file:/var/www/html/first/resources/views/user/edit_user.blade.php</file>
-            <file>file:/var/www/html/first/app/Http/Requests/StoreSupplier.php</file>
-            <file>file:/var/www/html/first/app/Http/Requests/UpdateCategory.php</file>
-            <file>file:/var/www/html/first/resources/views/category/category_add.blade.php</file>
-            <file>file:/var/www/html/first/app/Http/Model/User.php</file>
-            <file>file:/var/www/html/first/resources/views/supplier/supplier.blade.php</file>
-            <file>file:/var/www/html/first/app/Http/Model/SocialFacebookAccount.php</file>
-            <file>file:/var/www/html/first/app/Http/Controllers/ProductController.php</file>
-            <file>file:/var/www/html/first/resources/views/user/user.blade.php</file>
-            <file>file:/var/www/html/first/database/migrations/2018_04_05_081413_update_users_table.php</file>
-            <file>file:/var/www/html/first/app/Http/Requests/StoreProduct.php</file>
-            <file>file:/var/www/html/first/composer.json</file>
-            <file>file:/var/www/html/first/resources/views/product/add_product.blade.php</file>
-            <file>file:/var/www/html/first/.env</file>
-            <file>file:/var/www/html/first/resources/views/product/edit_product.blade.php</file>
-            <file>file:/var/www/html/first/app/Http/Requests/UpdateSupplier.php</file>
-            <file>file:/var/www/html/first/resources/views/index.blade.php</file>
-            <file>file:/var/www/html/first/database/migrations/2018_04_04_151334_create_social_facebook_accounts_table.php</file>
-            <file>file:/var/www/html/first/resources/views/login/login_content.blade.php</file>
-            <file>file:/var/www/html/first/resources/views/home.blade.php</file>
-            <file>file:/var/www/html/first/resources/views/supplier/add_supplier.blade.php</file>
-            <file>file:/var/www/html/first/app/Http/Requests/UpdateProduct.php</file>
-            <file>file:/var/www/html/first/database/migrations/2018_03_19_150236_add_role_to_users.php</file>
+            <file>file:/var/www/html/first/resources/views/paypal/index.blade.php</file>
+            <file>file:/var/www/html/first/app/Http/Controllers/SupplierController.php</file>
             <file>file:/var/www/html/first/app/Http/Controllers/CategoryController.php</file>
+            <file>file:/var/www/html/first/app/Http/Controllers/AdminController.php</file>
+            <file>file:/var/www/html/first/app/Http/Controllers/ChainboxController.php</file>
             <file>file:/var/www/html/first/routes/web.php</file>
+            <file>file:/var/www/html/first/app/Http/Controllers/PaymentController.php</file>
         </group>
     </open-files>
 </project-private>

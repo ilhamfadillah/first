@@ -40,4 +40,9 @@ return [
         'client_secret' => 'e72af746c84d02570a262e932cae054b',
         'redirect' => 'https://safe-woodland-77424.herokuapp.com/callback',
     ],
+    
+    'paypal' => [
+	'client_id' => 'AQ6txFydPE6WHuhC0KzcYpm92fwMINIWQg9uLcRiatnsyqbKgEsuMKvGwlCI3CpNCoSghHh0y54NyeAY',
+	'secret' => 'ECRPybZy1UmDQ2hugUvfuKD3rM1h8MnBrtm37rtZt_uNTRoSlvE5pOGbDlGNBqXkZvaWT9WCCVQem_qG'
+    ],
 ];

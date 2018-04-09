@@ -30,6 +30,7 @@
     <li><a href="{{ url('supplier') }}">Supplier</a></li>
     <li><a href="{{ url('category') }}">Category</a></li>
     <li><a href="{{ url('chainbox') }}">Chain Box</a></li>
+    <li><a href="{{ url('paypal') }}">Paypal</a></li>
   </ul>
 </section>
 <!-- /.sidebar -->
