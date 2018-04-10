@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Input;
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
 use PayPal\Api\Item;
+use PayPal\Api\PayerInfo;
+use PayPal\Api\ShippingAddress;
+
 /** All Paypal Details class **/
 use PayPal\Api\ItemList;
 use PayPal\Api\Payer;
@@ -17,6 +20,9 @@ use PayPal\Rest\ApiContext;
 use Redirect;
 use Session;
 use URL;
+use DB;
+use App\Paypal;
+
 class PaymentController extends Controller
 {
     private $_api_context;
@@ -37,7 +43,8 @@ class PaymentController extends Controller
     }
     public function index()
     {
-        return view('paypal.index');
+        $paypals = DB::table('paypals')->get();
+      return view("paypal.index", compact('paypals'));
     }
     public function payWithpaypal(Request $request)
     {
@@ -99,10 +106,13 @@ class PaymentController extends Controller
         \Session::put('error', 'Unknown error occurred');
         return Redirect::to('/');
     }
-    public function getPaymentStatus()
+    public function getPaymentStatus(Request $request)
     {
+        
         /** Get the payment ID before session clear **/
         $payment_id = Session::get('paypal_payment_id');
+       
+        //var_dump($payment_total);exit();
         /** clear the session payment ID **/
         Session::forget('paypal_payment_id');
         if (empty(Input::get('PayerID')) || empty(Input::get('token'))) {
@@ -114,6 +124,24 @@ class PaymentController extends Controller
         $execution->setPayerId(Input::get('PayerID'));
         /**Execute the payment **/
         $result = $payment->execute($execution, $this->_api_context);
+        //var_dump($result->transactions);exit();
+        
+        $ins_paypal = new Paypal;
+        
+        $ins_paypal->transaction_id = $result->id;
+        $ins_paypal->email = $result->payer->payer_info->email;
+        $ins_paypal->country = $result->payer->payer_info->shipping_address->country_code;
+        $ins_paypal->state = $result->payer->payer_info->shipping_address->state;
+        $ins_paypal->city = $result->payer->payer_info->shipping_address->city;
+        $transactions = array();
+        foreach($result->transactions as $transaction){
+            $transactions[] = $transaction;
+        }
+        //var_dump();exit();
+        $ins_paypal->total = $transaction->amount->total;
+        $ins_paypal->save();
+        
+        
         if ($result->getState() == 'approved') {
             \Session::put('success', 'Payment success');
             return Redirect::to('/');
