@@ -77,9 +77,12 @@
 </script>
 <!-- Bootstrap 3.3.7 -->
 <script src="{{ URL::asset('/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+<!-- Chart.js charts -->
+<script src="{{ URL::asset('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js') }}"></script>
+<script src="{{ URL::asset('https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js') }}"></script>
 <!-- Morris.js charts -->
-<script src="{{ URL::asset('/bower_components/raphael/raphael.min.js') }}"></script>
-<script src="{{ URL::asset('/bower_components/morris.js/morris.min.js') }}"></script>
+<script src="{{ URL::asset('bower_components/raphael/raphael.min.js') }}"></script>
+<script src="{{ URL::asset('bower_components/morris.js/morris.min.js') }}"></script>
 <!-- Sparkline -->
 <script src="{{ URL::asset('/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js') }}"></script>
 <!-- jvectormap -->
@@ -118,5 +121,6 @@
 @yield('js')
 @yield('jquery')
 @yield('googlemap')
+@yield('bbca')
 </body>
 </html>

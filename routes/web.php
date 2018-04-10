@@ -158,10 +158,14 @@ Route::get('paypal', function () {
 });
 
     //payment form
-Route::get('/', 'PaymentController@index');
+//Route::get('/', 'PaymentController@index');
 // route for processing payment
 Route::post('paypal', 'PaymentController@payWithpaypal');
 // route for check status of the payment
 Route::get('status', 'PaymentController@getPaymentStatus');
-    //---------------------------------------------------------------------------
-//Auth::routes();
+//---------------------------------------------------------------------------
+//======================BBCA==================
+Route::get('bbca', function () {
+  return view('bbca.index');
+});
+//----------------------------------------------------------------------------
