@@ -149,7 +149,8 @@ return [
         Laravel\Socialite\SocialiteServiceProvider::class,
         'Netshell\Paypal\PaypalServiceProvider',
         'Collective\Html\HtmlServiceProvider',
-
+        Ixudra\Curl\CurlServiceProvider::class,
+        
         /*
          * Package Service Providers...
          */
@@ -214,6 +215,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Paypal' => 'Netshell\Paypal\Facades\Paypal',
+        'Curl' => Ixudra\Curl\Facades\Curl::class,
     ],
 
 ];

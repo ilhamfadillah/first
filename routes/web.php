@@ -166,6 +166,9 @@ Route::get('status', 'PaymentController@getPaymentStatus');
 //---------------------------------------------------------------------------
 //======================BBCA==================
 Route::get('bbca', function () {
-  return view('bbca.index');
+  return view('bbca');
 });
+
+Route::get('bbca', 'StockController@index');
+
 //----------------------------------------------------------------------------

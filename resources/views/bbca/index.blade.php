@@ -3,33 +3,9 @@
 @section('bbca')
 <script>    
 //var url = 'https://www.bloomberg.com/markets2/api/history/BBCA%3AIJ/PX_LAST?timeframe=5_YEAR&period=weekly&volumePeriod=weekly';
-
-  var newXHR;
-
-  // Helper function to make XMLHttpRequest without using jQuery or AngularJS $http service.
-  function sendXHR(options) {
-    //       (Modern browsers)    OR (Internet Explorer 5 or 6).
-    newXHR = new XMLHttpRequest();
-    if (options.sendJSON === true) {
-      options.contentType = "application/json; charset=utf-8";
-      options.data = JSON.stringify(options.data);
-    } else {
-      options.contentType = "application/x-www-form-urlencoded";
-    }
-    newXHR.open(options.type, options.url, options.async || true);
-    newXHR.setRequestHeader("Content-Type", options.contentType);
-    newXHR.send((options.type == "GET") ? options.data : null);
-    newXHR.onreadystatechange = options.callback; // Will executes a function when the HTTP request state changes.
-    return newXHR;
-  }
-
   // Call the WebService by using the helper function.
-  sendXHR({
-    type: "GET",
-    url: "https://crossorigin.me/https://www.bloomberg.com/markets2/api/history/BBCA%3AIJ/PX_LAST?timeframe=5_YEAR&period=weekly&volumePeriod=weekly",
-    callback: function() {
-      if (newXHR.readyState === 4 && newXHR.status === 200) {
-        var data = JSON.parse(newXHR.response); // Store the WebServices JSON data to the «data» variable.
+        
+        var data = <?php echo $response ?>; // Store the WebServices JSON data to the «data» variable.
         var len_data = data[0].price.length;
         var dates = [];
         var val = [];
@@ -93,9 +69,6 @@
                 }
             }
         });
-      }
-    }
-  });
 
 </script>
 @endsection
