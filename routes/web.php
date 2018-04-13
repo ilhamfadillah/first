@@ -170,5 +170,8 @@ Route::get('bbca', function () {
 });
 
 Route::get('bbca', 'StockController@index');
+Route::get('/bbca/pdf', 'StockController@pdf');
+Route::get('/bbca/excel', 'StockController@excel');
+//Route::get('/bbca/excel', 'StockController@excel');
 
 //----------------------------------------------------------------------------

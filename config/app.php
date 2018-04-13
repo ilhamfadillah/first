@@ -150,6 +150,8 @@ return [
         'Netshell\Paypal\PaypalServiceProvider',
         'Collective\Html\HtmlServiceProvider',
         Ixudra\Curl\CurlServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        Codedge\Fpdf\FpdfServiceProvider::class,
         
         /*
          * Package Service Providers...
@@ -216,6 +218,8 @@ return [
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Paypal' => 'Netshell\Paypal\Facades\Paypal',
         'Curl' => Ixudra\Curl\Facades\Curl::class,
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+        'Fpdf' => Codedge\Fpdf\Facades\Fpdf::class,
     ],
 
 ];

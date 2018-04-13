@@ -39,7 +39,7 @@
                 responsive: true,
                 title: {
                     display: true,
-                    text: 'Chart.js Line Chart'
+                    text: 'BBCA Stock Chart'
                 },
                 tooltips: {
                     mode: 'index',
@@ -75,11 +75,13 @@
 @section('content')
 
 <section class="content-header">
-    <h2>BBCA 5 Years</h2>
 </section>
 
 <section class="content">
-    <div class="summary"></div>
+    <div class="summary">
+        <a href="{{url('/bbca/excel')}}" class="btn btn-primary">Download .xls</a>
+        <a href="{{url('/bbca/pdf')}}" class="btn btn-primary">Download .pdf</a>
+    </div>
     <div class="chart-container" style="position: relative; height:40vh; width:80vw">
         <canvas id="myChart"></canvas>
     </div>
