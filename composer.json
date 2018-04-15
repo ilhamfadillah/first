@@ -19,6 +19,7 @@
         "netshell/paypal": "dev-master",
         "paypal/rest-api-sdk-php": "*",
         "phpoffice/phpspreadsheet": "^1.2"
+        
     },
     "require-dev": {
         "filp/whoops": "~2.0",

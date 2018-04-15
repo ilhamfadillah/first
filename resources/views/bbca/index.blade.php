@@ -79,7 +79,7 @@
 
 <section class="content">
     <div class="summary">
-        <a href="{{url('/bbca/excel')}}" class="btn btn-primary">Download .xls</a>
+        <a href="{{url('/bbca/excel')}}" download="" class="btn btn-primary">Download .xls</a>
         <a href="{{url('/bbca/pdf')}}" class="btn btn-primary">Download .pdf</a>
     </div>
     <div class="chart-container" style="position: relative; height:40vh; width:80vw">

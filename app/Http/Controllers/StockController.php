@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Ixudra\Curl\Facades\Curl;
-use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Facades\Excel;
 use Codedge\Fpdf\Fpdf\Fpdf;
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use Excel;
 
 class StockController extends Controller
 {
-    public function excel() {
+    public function excel(Excel $excel) {
+        
         $responses = Curl::to('https://www.bloomberg.com/markets2/api/history/BBCA%3AIJ/PX_LAST?timeframe=5_YEAR&period=weekly&volumePeriod=weekly')->get();
         $res = json_decode($responses, true);
         $res_count = count($res[0]['price']);
@@ -22,8 +24,30 @@ class StockController extends Controller
         for($i=0; $i<$res_count; $i++){
             array_push($dtime, $res[0]['price'][$i]['dateTime']);
             array_push($value, $res[0]['price'][$i]['value']);
+        }  
+        $j = 
+        $spreadsheet = new Spreadsheet();
+        $sheet = $spreadsheet->getActiveSheet();
+        $sheet->setCellValue('A4', 'Pergerakan Saham BBCA Selama 5 Tahun');
+        $sheet->setCellValue('A6', 'Tanggal');
+        $sheet->setCellValue('B6', 'Harga');
+        for($i=0; $i<$res_count; $i++){
+            //echo 'A'.($i+7); exit();
+            $cell_a = 'A'.($i+7);
+            $cell_b = 'B'.($i+7); 
+            $sheet->setCellValue($cell_a, $dtime[$i]);
+            $sheet->setCellValue($cell_b, $value[$i]);  
         }
-    }
+        $writer = new Xlsx($spreadsheet);
+        // We'll be outputting an excel file
+        header('Content-type: application/vnd.ms-excel');
+
+        // It will be called file.xls
+        header('Content-Disposition: attachment; filename="file.xls"');
+
+        // Write file to the browser
+        $writer->save('php://output');
+        }
     
     public function pdf(Fpdf $pdf) {
         $responses = Curl::to('https://www.bloomberg.com/markets2/api/history/BBCA%3AIJ/PX_LAST?timeframe=5_YEAR&period=weekly&volumePeriod=weekly')->get();
@@ -52,7 +76,7 @@ class StockController extends Controller
             $pdf->Cell(40,5, $value[$i]);
             $pdf->Ln();
         }
-        $pdf->output();
+        $pdf->output('file.pdf', 'D');
         exit;
     }
     public function index()
